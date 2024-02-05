@@ -11,7 +11,7 @@ pokemon_data = []
 
 file_name = 'pokemon_data.pkl'
 
-if os.path.exists(file_name):
+if os.path.isfile(file_name):
     with open(file_name, "rb") as file:
         pokemon_data = pickle.load(file)
     print("Données des pokémons chargées depuis le fichier.")
@@ -20,7 +20,6 @@ if os.path.exists(file_name):
         plt.figure()
         plt.imshow(pok['image'], aspect='auto')
         plt.title(pok['name'])
-        plt.show()
     
 else:
     for name in pokemon_names:
@@ -34,8 +33,8 @@ else:
         plt.figure()
         plt.imshow(img, aspect='auto')
         plt.title(name)
-        plt.show()
 
     with open(file_name, "wb") as file:
         pickle.dump(pokemon_data, file)
     print("Données des pokémons sauvegardées avec succès.")
+plt.show()
