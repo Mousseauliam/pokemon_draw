@@ -9,7 +9,10 @@ base_url = "https://pokeapi.co/api/v2/pokemon/"
 pokemon_names = ["pikachu", "piplup", "mew"]
 pokemon_data = []
 
-file_name = 'pokemon_data.pkl'
+if not os.path.exists('sauvegarde'):
+    os.makedirs('sauvegarde')
+
+file_name = os.path.join('sauvegarde', 'pokemon_data.pkl')
 
 if os.path.isfile(file_name):
     with open(file_name, "rb") as file:
