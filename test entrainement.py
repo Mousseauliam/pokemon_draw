@@ -9,5 +9,5 @@ results = model.train(
    imgsz=1280,
    epochs=50,
    batch=8,
-   name='yolov8n_v8_test'
+   name='test pika'
 )

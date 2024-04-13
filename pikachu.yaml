@@ -1,4 +1,4 @@
-#path: train/pikachu
+#path: yolo test/
 train: train/pikachu/images/
 val: vali/pikachu/images/
  
