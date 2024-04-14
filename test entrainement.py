@@ -1,7 +1,7 @@
 from ultralytics import YOLO
  
 # Load the model.
-model = YOLO("runs/detect/v1_pikachu/weights/best.pt")
+model = YOLO("yolov8n.pt")
  
 # Training.
 results = model.train(
@@ -9,5 +9,5 @@ results = model.train(
    imgsz=750,
    epochs=50,
    batch=8,
-   name='test pikav1 dd'
+   name='pikachu_v2'
 )
