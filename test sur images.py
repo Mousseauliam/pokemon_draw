@@ -39,8 +39,7 @@ for i,img in enumerate(image_list):
     detections = model(frame)[0]
     # loop over the detections
     #for data in detections.boxes.data.tolist():
-    final_boxes = cv2.dnn.NMSBoxes(detections.boxes, detections.boxes.data.tolist()[0][4], 0.5, 0.5)
-    for box in final_boxes:
+    for box in detections.boxes:
         #extract the label name
         label=model.names.get(box.cls.item())
             
@@ -62,6 +61,7 @@ for i,img in enumerate(image_list):
         y = ymin - 15 if ymin - 15 > 15 else ymin + 15
         cv2.putText(frame, "{} {:.1f}%".format(label,float(confidence*100)), (xmin, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, GREEN, 2)
 
+    
     # show the frame to our screen
     cv2.imshow("Img{}".format(i), frame)
 
