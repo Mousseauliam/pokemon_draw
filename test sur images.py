@@ -29,7 +29,7 @@ image_list=['pika1.png','pika2.png','pika3.png','pika4.png','pika5.jpg','pika6.j
 
 # load the pre-trained YOLOv8n model
 #model = YOLO("yolov8n.pt")
-model = YOLO("runs/detect/test pikav1 dd/weights/best.pt") # test trained model
+model = YOLO("runs/detect/ti+pi_v1/weights/best.pt") # test trained model
 
 
 for i,img in enumerate(image_list):
