@@ -1,22 +1,13 @@
 from ultralytics import YOLO
  
 # Load the model.
-model = YOLO("runs/detect/pikachu_v2/weights/best.pt")
+model = YOLO("yolov8n.pt")
  
 # Training.
-"""
 results = model.train(
-   data='pikachu.yaml',
+   data='pi+ti.yaml',
    imgsz=750,
    epochs=50,
    batch=8,
-   name='pikachu_v2'
-)"""
-
-results = model.train(
-   data='tiplouf.yaml',
-   imgsz=750,
-   epochs=50,
-   batch=8,
-   name='ti+pi_v1'
+   name='ti+pi_v2'
 )

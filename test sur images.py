@@ -29,7 +29,7 @@ image_list=['pika1.png','pika2.png','pika3.png','pika4.png','pika5.jpg','pika6.j
 
 # load the pre-trained YOLOv8n model
 #model = YOLO("yolov8n.pt")
-model = YOLO("runs/detect/ti+pi_v1/weights/best.pt") # test trained model
+model = YOLO("runs/detect/ti+pi_v2/weights/best.pt") # test trained model
 
 
 for i,img in enumerate(image_list):
@@ -39,7 +39,8 @@ for i,img in enumerate(image_list):
     detections = model(frame)[0]
     # loop over the detections
     #for data in detections.boxes.data.tolist():
-    for box in detections.boxes:
+    final_boxes = cv2.dnn.NMSBoxes(detections.boxes, detections.boxes.data.tolist()[0][4], 0.5, 0.5)
+    for box in final_boxes:
         #extract the label name
         label=model.names.get(box.cls.item())
             
