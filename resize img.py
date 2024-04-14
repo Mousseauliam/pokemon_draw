@@ -15,9 +15,9 @@ def resize_image_keep_ratio(image, target_height):
     return resized_image
 
 # Dossier source contenant les images
-input_folder = "../pokemon_draw/yolo test/datasets/vali/pikachu/images"
+input_folder = "bddpokemon/Mentali"
 # Dossier de destination pour les images redimensionnées
-output_folder =  "../pokemon_draw/yolo test/datasets/vali/pikachu/image"
+output_folder =  "datasets/train/mentali/images"
 
 # Créer le dossier de sortie s'il n'existe pas
 if not os.path.exists(output_folder):
