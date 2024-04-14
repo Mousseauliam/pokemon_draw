@@ -1,0 +1,24 @@
+#path: yolo test/
+train: train/test/images/
+val: vali/test/images/
+ 
+# class names
+names: 
+  0: dog
+  1: person
+  2: cat
+  3: tv
+  4: car
+  5: meatballs
+  6: marinara sauce
+  7: tomato soup
+  8: chicken noodle soup
+  9: french onion soup
+  10: chicken breast
+  11: ribs
+  12: pulled pork
+  13: hamburger
+  14: cavity
+  15: tiplouf
+  16: pikachu
+  17: mentali

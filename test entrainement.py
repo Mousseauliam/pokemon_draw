@@ -5,9 +5,9 @@ model = YOLO("yolov8n.pt")
  
 # Training.
 results = model.train(
-   data='pi+ti.yaml',
+   data='total.yaml',
    imgsz=750,
    epochs=50,
    batch=8,
-   name='ti+pi_v2'
+   name='total_v1'
 )
