@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.font as font
-from playsound import playsound
+#from playsound import playsound
 from PIL import Image
 from PIL import ImageTk
 import customtkinter as ctk
