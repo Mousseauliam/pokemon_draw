@@ -16,7 +16,7 @@ GREEN = (0, 255, 0)
 
 
 # load the pre-trained YOLOv8n model
-model = YOLO("runs/detect/ti+pi_v2/weights/best.pt")
+model = YOLO("runs/detect/total_v1/weights/best.pt")
 #model = YOLO("yolov5n.pt")
 
 #detect on video
