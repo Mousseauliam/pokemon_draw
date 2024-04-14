@@ -1,7 +1,7 @@
 from ultralytics import YOLO
  
 # Load the model.
-model = YOLO("yolov8n.pt")
+model = YOLO("runs/detect/pikachu_v2/weights/best.pt")
  
 # Training.
 """
