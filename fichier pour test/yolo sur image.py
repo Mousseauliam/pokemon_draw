@@ -25,6 +25,8 @@ def resize_image_keep_ratio(image, target_height):
     
     return resized_image
 
+chemin='fichier pour test/'
+
 image_list=['pika1.png','pika2.png','pika3.png','pika4.png','pika5.jpg','pika6.jpeg','pika7.jpg','pika8.png','pika9.jpg','test.png']
 
 # load the pre-trained YOLOv8n model
@@ -34,7 +36,7 @@ model = YOLO("../runs/detect/total_v2/weights/best.pt") # test trained model
 
 for i,img in enumerate(image_list):
     #detect on image
-    frame=resize_image_keep_ratio(cv2.imread(img),600)
+    frame=resize_image_keep_ratio(cv2.imread(chemin+img),600)
 
     detections = model(frame)[0]
     # loop over the detections
