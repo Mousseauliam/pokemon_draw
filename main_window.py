@@ -33,7 +33,7 @@ class Menu(tk.Tk):
         self.police = ctk.CTkFont("dogica", size=22)
         self.policeR = ctk.CTkFont("dogica", size=9)
 
-        self.boutonJ = ctk.CTkButton(self.canvas, text="Jouer", command=self.quit, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonJ = ctk.CTkButton(self.canvas, text="Jouer", command=self.masquer_boutons, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonR = ctk.CTkButton(self.canvas, text="Règles", command=self.AfficheRegles, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonQ = ctk.CTkButton(self.canvas, text="Quitter", command=self.quit, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonS = ctk.CTkButton(self.canvas, text="Son", command=self.quit, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
@@ -43,6 +43,10 @@ class Menu(tk.Tk):
 
         self.texte = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text="Bienvenue dans PokéDraw, le but est de dessiner un Pokémon parmi \ntrois disponibles (Pikachu, Tiplouf ou Mentali) de manière à ce que l'ordinateur puisse le reconnaître. \nVoici les règles du jeu : \n     1. Joueurs : Le jeu se joue à une personne. \n     2. Choix du Pokémon : Avant de commencer à dessiner,\n     vous devez choisir un pokémon à dessiner entre Pikachu, Tiplouf et Mentali. \n     3. Dessin : Une fois le pokémon choisi, vous pouvez dessiner le pokémon,\n   en couleur ou en noir et blanc.\n     4. Soumission du dessin :\n     Lorsque le pokémon est dessinez, cliquez sur “Jouer“ et prenez en photo votre pokémon.\n     5. Résultats : Enfin, l‘ordinateur tente de déterminer de quel pokémon il s‘agit.\n     Il donnera également quelques informations sur le pokémon reconnu!\nVoilà, vous êtes désormais prêt à jouer à PokéDraw. Bon jeu!")
         self.AfficheMenu()
+        
+    def masquer_boutons(self):
+        for widget in self.winfo_children():
+            widget.place_forget()
 
     def AfficheMenu(self):
         self.boutonB.place_forget()
