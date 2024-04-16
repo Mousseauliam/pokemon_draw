@@ -3,14 +3,13 @@ from PIL import Image, ImageTk
 import cv2
 
 class Cweb(tk.Canvas):
+    
     def __init__(self, window, video_source=0):
         tk.Canvas.__init__(self, window, width=400, height=300 )
         self.window = window
         self.vid = cv2.VideoCapture(video_source)
-
+        self.cam=True
         self.update()
-        
-        #self.window.mainloop()
     
     def update(self):
         # Capture une image depuis la vidéo
@@ -27,6 +26,9 @@ class Cweb(tk.Canvas):
             self.photo = photo
         
         # Répéter cette fonction à intervalle régulier
-        self.window.after(10, self.update)
+        if self.cam:
+            self.window.after(10, self.update)
 
 
+    def togle_cam(self):
+        self.cam= not self.cam

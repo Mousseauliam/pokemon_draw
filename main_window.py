@@ -5,10 +5,16 @@ from PIL import Image
 from PIL import ImageTk
 import customtkinter as ctk
 from Cwebcam import Cweb
+import threading
 
 class Menu(tk.Tk):
+    
+    cam=Cweb
+    
     def __init__(self):
         tk.Tk.__init__(self)
+        
+        self.charg_cam()
 
         # Musique
 
@@ -50,7 +56,12 @@ class Menu(tk.Tk):
         #Affiche le menu.
 
         self.AfficheMenu()
-        
+    
+    def charg_cam(self):
+        def cam_th():
+            self.cam = Cweb(self)
+        thread = threading.Thread(target=cam_th)
+        thread.start()
     
     def cacher_boutons(self):
         for widget in self.winfo_children():
@@ -86,18 +97,22 @@ class Menu(tk.Tk):
 
     def Jouer(self):
         self.canvas.delete("TITRE")
+        self.cam.place_forget()
         self.cacher_boutons()
         self.boutonB.place(relx=0.8, rely=0.6, anchor="center")
         self.boutonN.place(relx=0.8, rely=0.5, anchor="center")
 
-        
+    
     def InterPhoto(self):
         self.cacher_boutons()
-        self.cam=Cweb(self)
         self.cam.place(x=50,y=150)
         self.boutonB2.place(relx=0.8, rely=0.6, anchor="center")
 
-
+    def Reponse(self):
+        self.cacher_boutons()
+        self.cam.place_forget()
+        self.cam.togle_cam()
+        
 if __name__ == "__main__":
     app = Menu()
     app.title("POKÉDRAW")
