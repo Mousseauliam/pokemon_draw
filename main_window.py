@@ -48,6 +48,7 @@ class Menu(tk.Tk):
         self.boutonB = ctk.CTkButton(self, text="Retour", command=self.AfficheMenu, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonB2 = ctk.CTkButton(self, text="Retour", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonN = ctk.CTkButton(self, text="Suivant", command=self.InterPhoto, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonP = ctk.CTkButton(self, text="Prendre photo", command=self.Photo, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
 
         #Pages Règles 
 
@@ -107,8 +108,9 @@ class Menu(tk.Tk):
         self.cacher_boutons()
         self.cam.place(x=50,y=150)
         self.boutonB2.place(relx=0.8, rely=0.6, anchor="center")
+        self.boutonP.place(relx=0.8, rely=0.5, anchor="center")
 
-    def Reponse(self):
+    def Photo(self):
         self.cacher_boutons()
         self.cam.place_forget()
         self.cam.togle_cam()
