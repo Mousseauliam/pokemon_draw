@@ -29,6 +29,9 @@ class Cweb(tk.Canvas):
         if self.cam:
             self.window.after(10, self.update)
 
+    def Frame(self):
+        ret, frame = self.vid.read()
+        return frame
 
     def togle_cam(self):
         self.cam= not self.cam
