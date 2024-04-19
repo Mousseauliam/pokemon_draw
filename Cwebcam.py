@@ -2,6 +2,8 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import cv2
 
+#Pour mac : pip install opencv-python
+
 class Cweb(tk.Canvas):
     
     def __init__(self, window, video_source=0):
