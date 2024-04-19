@@ -5,6 +5,8 @@ from PIL import Image
 from PIL import ImageTk
 import customtkinter as ctk
 from Cwebcam import Cweb
+from save_img import save_frame
+from find_pokemon import find_pokemon
 import threading
 
 class Menu(tk.Tk):
@@ -120,8 +122,9 @@ class Menu(tk.Tk):
 
     def Photo(self):
         self.cacher_boutons()
+        save_frame(self.cam.Frame())
+        find_pokemon()
         self.cam.place_forget()
-        self.cam.togle_cam()
         self.boutonM.place(relx=0.8, rely=0.6, anchor="center")
         self.boutonRe.place(relx=0.8, rely=0.5, anchor="center")
 

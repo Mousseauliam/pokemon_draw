@@ -1,13 +1,16 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import cv2
+from save_img import save_frame
 
 #Pour mac : pip install opencv-python
 
 class Cweb(tk.Canvas):
+    width=400
+    height=300
     
     def __init__(self, window, video_source=0):
-        tk.Canvas.__init__(self, window, width=400, height=300 )
+        tk.Canvas.__init__(self, window, width=self.width, height=self.height )
         self.window = window
         self.vid = cv2.VideoCapture(video_source)
         self.cam=True
@@ -16,12 +19,15 @@ class Cweb(tk.Canvas):
     def update(self):
         # Capture une image depuis la vidéo
         ret, frame = self.vid.read()
+        self.frame=frame
         
         if ret:
             # Convertir l'image en format reconnu par Pillow
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            image = Image.fromarray(image)
+            image_r = cv2.resize(image, (self.width,self.height))
+            image = Image.fromarray(image_r)
             photo = ImageTk.PhotoImage(image=image)
+            
             
             # Afficher l'image sur le canvas
             self.create_image(0, 0, image=photo, anchor=tk.NW)
