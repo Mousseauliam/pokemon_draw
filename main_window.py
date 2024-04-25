@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import tkinter.font as font
 import pygame
 from PIL import Image
@@ -15,9 +16,8 @@ class Menu(tk.Tk):
     
     def __init__(self):
         tk.Tk.__init__(self)
-        self.title("POKÉDRAW")
         
-        #Lance la camera
+        #Lance la camera sur autre thread
         self.charg_cam()
         
         # Musique
@@ -25,7 +25,6 @@ class Menu(tk.Tk):
         pygame.mixer.init()
         pygame.mixer.music.load("elements graphique/Musique1.mp3")
         pygame.mixer.music.play()
-        
         
         # a suprimer avant de rendre le dossier
         self.Pause()
@@ -37,11 +36,16 @@ class Menu(tk.Tk):
         self.regle = tk.PhotoImage(file="elements graphique/TITRER.png").subsample(4)
         self.pierreR = tk.PhotoImage(file="elements graphique/Pierre-2.png").subsample(3)
         self.cabane = tk.PhotoImage(file="elements graphique/CABANE.png")
+        #self.canvas.create_image(self.largeur/2, self.hauteur/2, image=self.gif,tag="fond")
+        
+        #Fenetre
+        
         self.hauteur = self.gif.height()
         self.largeur= self.gif.width()
         self.resizable(width=False,height=False)
+        self.title("POKÉDRAW")
+        
         self.canvas = tk.Canvas(self, width=self.largeur, height=self.hauteur)
-        #self.canvas.create_image(self.largeur/2, self.hauteur/2, image=self.gif,tag="fond")
         
         #Boutons et police.
 
@@ -68,6 +72,10 @@ class Menu(tk.Tk):
         #Affiche le menu.
 
         self.AfficheMenu()
+        
+        #test bar de charg
+        self.progress_bar = ttk.Progressbar(self, orient="horizontal", mode="indeterminate")
+
     
     def charg_cam(self):
         def cam_th():
@@ -77,7 +85,7 @@ class Menu(tk.Tk):
     
     def cacher_boutons(self):
         for widget in self.winfo_children():
-            if isinstance(widget, ctk.CTkButton) or isinstance(widget, tk.Label):
+            if isinstance(widget, ctk.CTkButton) or isinstance(widget, tk.Label) or isinstance(widget, ttk.Progressbar):
                 widget.place_forget()
 
 
@@ -124,18 +132,31 @@ class Menu(tk.Tk):
         self.cam.place(x=50,y=150)
         self.boutonB2.place(relx=0.8, rely=0.6, anchor="center")
         self.boutonP.place(relx=0.8, rely=0.5, anchor="center")
+        
+    def find_poke_update_reponse(self):
+        self.name, self.confidence = find_pokemon()
+        self.response['text']=f"Objet détecté : {self.name}, Score de confiance : {self.confidence}"
 
     def Photo(self):
         self.cacher_boutons()
         save_frame(self.cam.Frame())
-        self.name, self.confidence = find_pokemon()
-        self.response['text']=f"Objet détecté : {self.name}, Score de confiance : {self.confidence}"
+        self.find_thread = threading.Thread(target=self.find_poke_update_reponse)
+        self.find_thread.start()
+        self.progress_bar.start()
+        self.updateProgressBar()
+        self.progress_bar.place(relx=0.3, rely=0.3, anchor="center")
         self.response.place(relx=0.3, rely=0.5, anchor="center")
         self.cam.place_forget()
         self.boutonM.place(relx=0.8, rely=0.6, anchor="center")
         self.boutonRe.place(relx=0.8, rely=0.5, anchor="center")
 
-
+    def updateProgressBar(self):
+        if not self.find_thread.is_alive():
+            self.progress_bar.stop()
+            return
+        self.progress_bar.step(10)
+        self.after(100, self.updateProgressBar)
+        
 if __name__ == "__main__":
     app = Menu()
     app.mainloop()

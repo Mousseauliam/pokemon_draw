@@ -2,7 +2,7 @@ from PIL import Image
 from ultralytics import YOLO
 from save_img import recup_num
 
-def find_pokemon(confidence_threshold=0.1):
+def find_pokemon(confidence_threshold=0.8):
     # Chargement de l'image
     image_path = 'enregistrement/save'+str(recup_num())+'.png'
     #image_path = 'enregistrement/pika2.png'
