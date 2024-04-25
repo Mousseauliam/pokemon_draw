@@ -15,23 +15,28 @@ class Menu(tk.Tk):
     
     def __init__(self):
         tk.Tk.__init__(self)
+        self.title("POKÉDRAW")
         
         #Lance la camera
-
         self.charg_cam()
+        
         # Musique
 
         pygame.mixer.init()
-        pygame.mixer.music.load("Dossierpoke/Musique1.mp3")
+        pygame.mixer.music.load("elements graphique/Musique1.mp3")
         pygame.mixer.music.play()
+        
+        
+        # a suprimer avant de rendre le dossier
+        self.Pause()
 
         #Images
 
-        self.gif = tk.PhotoImage(file="Dossierpoke/fond.gif").subsample(2)
-        self.titre = tk.PhotoImage(file="Dossierpoke/TITREPIXEL.png").subsample(2)
-        self.regle = tk.PhotoImage(file="Dossierpoke/TITRER.png").subsample(4)
-        self.pierreR = tk.PhotoImage(file="Dossierpoke/Pierre-2.png").subsample(3)
-        self.cabane = tk.PhotoImage(file="Dossierpoke/CABANE.png")
+        self.gif = tk.PhotoImage(file="elements graphique/fond.gif").subsample(2)
+        self.titre = tk.PhotoImage(file="elements graphique/TITREPIXEL.png").subsample(2)
+        self.regle = tk.PhotoImage(file="elements graphique/TITRER.png").subsample(4)
+        self.pierreR = tk.PhotoImage(file="elements graphique/Pierre-2.png").subsample(3)
+        self.cabane = tk.PhotoImage(file="elements graphique/CABANE.png")
         self.hauteur = self.gif.height()
         self.largeur= self.gif.width()
         self.resizable(width=False,height=False)
@@ -125,12 +130,12 @@ class Menu(tk.Tk):
         save_frame(self.cam.Frame())
         self.name, self.confidence = find_pokemon()
         self.response['text']=f"Objet détecté : {self.name}, Score de confiance : {self.confidence}"
-        self.response.place(relx=0.5, rely=0.5, anchor="center")
+        self.response.place(relx=0.3, rely=0.5, anchor="center")
         self.cam.place_forget()
         self.boutonM.place(relx=0.8, rely=0.6, anchor="center")
         self.boutonRe.place(relx=0.8, rely=0.5, anchor="center")
 
+
 if __name__ == "__main__":
     app = Menu()
-    app.title("POKÉDRAW")
     app.mainloop()
