@@ -30,15 +30,22 @@ while True:
     start = datetime.datetime.now()
 
     #ret, frame = video_cap.read()
-    frame = vs.read(); ret=True
+    frame = vs.read()
+    ret=True
     
     
     # if there are no more frames to process, break out of the loop
     if not ret:
         break
 
+    alpha = 1.5  # Contrast control (1.0-3.0)
+    beta = 10    # Brightness control (0-100)
+
+    # Apply contrast and brightness adjustments
+    adjusted_image = cv2.convertScaleAbs(frame, alpha=alpha, beta=beta)
+    
     # run the YOLO model on the frame
-    detections = model(frame)[0]
+    detections = model(adjusted_image)[0]
     
     # loop over the detections
     #for data in detections.boxes.data.tolist():
@@ -58,11 +65,11 @@ while True:
         # if the confidence is greater than the minimum confidence,
         # draw the bounding box on the frame
         xmin, ymin, xmax, ymax = int(data[0]), int(data[1]), int(data[2]), int(data[3])
-        cv2.rectangle(frame, (xmin, ymin) , (xmax, ymax), GREEN, 2)
+        cv2.rectangle(adjusted_image, (xmin, ymin) , (xmax, ymax), GREEN, 2)
 
         #draw confidence and label
         y = ymin - 15 if ymin - 15 > 15 else ymin + 15
-        cv2.putText(frame, "{} {:.1f}%".format(label,float(confidence*100)), (xmin, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, GREEN, 2)
+        cv2.putText(adjusted_image, "{} {:.1f}%".format(label,float(confidence*100)), (xmin, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, GREEN, 2)
         #cv2.circle(frame, (int(X)-15, int(Y)), 1, GREEN, 2)
         #cv2.putText(frame, poslbl, (int(X), int(Y)),cv2.FONT_HERSHEY_SIMPLEX, 0.5, GREEN, 2)
 
@@ -74,11 +81,11 @@ while True:
 
     # calculate the frame per second and draw it on the frame
     fps = f"FPS: {1 / total:.2f}"
-    cv2.putText(frame, fps, (50, 50),
+    cv2.putText(adjusted_image, fps, (50, 50),
                 cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 4)
 
     # show the frame to our screen
-    cv2.imshow("Frame", frame)
+    cv2.imshow("Frame", adjusted_image)
     #writer.write(frame)
     if cv2.waitKey(1) == 27:
         break

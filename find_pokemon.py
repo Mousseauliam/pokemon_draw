@@ -25,6 +25,7 @@ def find_pokemon(confidence_threshold=0.1):
         # Affichage du nom de la classe et du score de confiance si le score dépasse le seuil
         if confidence >= confidence_threshold:
             print(f"Objet détecté : {class_name}, Score de confiance : {confidence}")
+            return (class_name,confidence)
 
 # Chemin de l'image PNG à tester
 image_path = 'enregistrement/pika2.png'

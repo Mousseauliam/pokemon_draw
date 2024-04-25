@@ -19,7 +19,6 @@ class Menu(tk.Tk):
         #Lance la camera
 
         self.charg_cam()
-
         # Musique
 
         pygame.mixer.init()
@@ -59,6 +58,7 @@ class Menu(tk.Tk):
 
         self.texte = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text="Pierre : Hey salut, je m’appelle Pierre ! J’espère que tu es prêt à me monter tes meilleurs talents d’artiste.\nTu dois tout d’abord dessiner l’un des Pokémons parmi les 3 proposées : Pikachu, Tiplouf et Mentali.\nUne fois ton magnifique dessin terminé, montre-le-moi à la caméra et prend une photo !\nSi l’âme de l’artiste est en toi, je devrais être capable de reconnaitre quel Pokémon tu as dessiné\npour te donner quelques anecdotes sur ce dernier !")
 
+        self.response = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text=" test ")
         
         #Affiche le menu.
 
@@ -123,7 +123,9 @@ class Menu(tk.Tk):
     def Photo(self):
         self.cacher_boutons()
         save_frame(self.cam.Frame())
-        find_pokemon()
+        self.name, self.confidence = find_pokemon()
+        self.response['text']=f"Objet détecté : {self.name}, Score de confiance : {self.confidence}"
+        self.response.place(relx=0.5, rely=0.5, anchor="center")
         self.cam.place_forget()
         self.boutonM.place(relx=0.8, rely=0.6, anchor="center")
         self.boutonRe.place(relx=0.8, rely=0.5, anchor="center")
