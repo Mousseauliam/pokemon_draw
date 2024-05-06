@@ -1,9 +1,0 @@
-#path: yolo test/
-train: train/total/images/
-val: vali/total/images/
- 
-# class names
-names: 
-  0: tiplouf
-  1: pikachu
-  2: mentali
