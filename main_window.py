@@ -27,7 +27,7 @@ class Menu(tk.Tk):
         pygame.mixer.music.play()
         
         # a suprimer avant de rendre le dossier
-        self.Pause()
+        #self.Pause()
 
         #Images
 

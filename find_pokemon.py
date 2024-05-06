@@ -9,7 +9,7 @@ def find_pokemon(confidence_threshold=0.8):
     image = Image.open(image_path)
 
     # Initialisation du modèle YOLO
-    model = YOLO("runs/detect/total_v2/weights/best.pt")
+    model = YOLO("runs/detect/total_v/weights/best.pt")
 
     # Détection des objets dans l'image
     detections = model(image)[0]

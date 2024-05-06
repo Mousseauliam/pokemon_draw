@@ -16,7 +16,7 @@ GREEN = (0, 255, 0)
 
 
 # load the pre-trained YOLOv8n model
-model = YOLO("../runs/detect/total_v2/weights/best.pt")
+model = YOLO("yolov9s.pt")
 
 #detect on video
 # initialize the video capture object
