@@ -148,6 +148,7 @@ class Menu(tk.Tk):
         self.response['text']=f"Objet détecté : {self.name}, Score de confiance : {self.confidence}"
 
     def Photo(self):
+        print('photo')
         self.cacher_boutons()
         self.canvas.delete("Poke")
         save_frame(self.cam.Frame())
