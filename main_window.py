@@ -128,6 +128,10 @@ class Menu(tk.Tk):
             pygame.mixer.music.play()
 
     def Jouer(self):
+        self.canvas.delete("Pikachu")
+        self.canvas.delete("Mentali")
+        self.canvas.delete("Tiplouf")
+        self.canvas.delete("PierreP")
         self.canvas.delete("TITRE")
         self.cam.place_forget()
         self.cacher_boutons()
@@ -152,22 +156,19 @@ class Menu(tk.Tk):
         self.response['text'] = f"{self.name}"
         print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
         if self.name == "tiplouf":
-            print("AZAZA")
-            self.canvas.create_image(330,200,image=self.tiplouf,tag="Tiplouf")
+            self.canvas.create_image(320,200,image=self.tiplouf,tag="Tiplouf")
         
         if self.name == "mentali":
-            print("OZOZO")
-            self.canvas.create_image(330,200,image=self.mentali,tag="Mentali")
+            self.canvas.create_image(315,210,image=self.mentali,tag="Mentali")
         
         if self.name == "pikachu":
-            print("UZUZU")
             self.canvas.create_image(330,200,image=self.pikachu,tag="Pikachu")
 
     def Photo(self):
         print('photo')
         self.cacher_boutons()
         self.canvas.create_image(310,280,image=self.rondin,tag="Rondin")
-        #self.canvas.create_image(250,200,image=self.boom,tag="PierreP")
+        self.canvas.create_image(700,300,image=self.pierreP,tag="PierreP")
         self.canvas.delete("Poke")
         save_frame(self.cam.Frame())
         self.find_thread = threading.Thread(target=self.find_poke_update_reponse)
