@@ -3,8 +3,6 @@ from PIL import Image, ImageTk
 import cv2
 from save_img import save_frame
 
-#Pour mac : pip install opencv-python
-
 class Cweb(tk.Canvas):
     width=400
     height=300
