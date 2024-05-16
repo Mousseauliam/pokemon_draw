@@ -67,6 +67,10 @@ class Menu(tk.Tk):
 
         self.response = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text=" test ")
         
+        #Pages Jouer
+
+        self.texte2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text=" Choisis le Pokémon que tu veux dessiner !\nN'hésite pas à aller sur internet pour t'inspirer ! ")
+
         #Affiche le menu.
 
         self.AfficheMenu()
@@ -125,16 +129,19 @@ class Menu(tk.Tk):
         self.cacher_boutons()
         self.boutonB.place(relx=0.4, rely=0.9, anchor="center")
         self.boutonN.place(relx=0.6, rely=0.9, anchor="center")
+        self.canvas.delete("Poke")
         self.canvas.create_image(300,250,image=self.poke,tag="Poke")
         self.canvas.create_image(500,250,image=self.pierreJ,tag="PierreJ")
+        self.texte2.place(relx=0.5, rely=0.8, anchor="center")
         
 
     
     def InterPhoto(self):
         self.cacher_boutons()
-        self.cam.place(x=50,y=150)
-        self.boutonB2.place(relx=0.4, rely=0.9, anchor="center")
-        self.boutonP.place(relx=0.6, rely=0.9, anchor="center")
+        self.canvas.delete("PierreJ")
+        self.cam.place(x=475,y=125)
+        self.boutonB2.place(relx=0.3, rely=0.9, anchor="center")
+        self.boutonP.place(relx=0.7, rely=0.9, anchor="center")
         
     def find_poke_update_reponse(self):
         self.name, self.confidence = find_pokemon()
@@ -142,6 +149,7 @@ class Menu(tk.Tk):
 
     def Photo(self):
         self.cacher_boutons()
+        self.canvas.delete("Poke")
         save_frame(self.cam.Frame())
         self.find_thread = threading.Thread(target=self.find_poke_update_reponse)
         self.find_thread.start()
