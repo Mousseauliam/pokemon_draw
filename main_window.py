@@ -1,3 +1,4 @@
+'test'
 import tkinter as tk
 from tkinter import ttk
 import tkinter.font as font
@@ -36,9 +37,9 @@ class Menu(tk.Tk):
         self.cabane = tk.PhotoImage(file="elements graphique/CABANE.png")
         self.poke = tk.PhotoImage(file="elements graphique/Pokerock.png").subsample(4)
         self.pierreM = tk.PhotoImage(file="elements graphique/PierreMontre.png")
-        self.pikachu = tk.PhotoImage(file="elements graphique/pikachu.png").subsample(4)
-        self.tiplouf = tk.PhotoImage(file="elements graphique/tiplouf.png").subsample(4)
-        self.mentali = tk.PhotoImage(file="elements graphique/mentali.png").subsample(4)
+        #self.pikachu = tk.PhotoImage(file="elements graphique/pikachu.png").subsample(4)
+        #self.tiplouf = tk.PhotoImage(file="elements graphique/tiplouf.png").subsample(4)
+        #self.mentali = tk.PhotoImage(file="elements graphique/mentali.png").subsample(4)
         self.Pastrouve = tk.PhotoImage(file="elements graphique/Point_int.png").subsample(4)
         self.pierreP = tk.PhotoImage(file="elements graphique/PierrePouce.png").subsample(3)
         self.rondin = tk.PhotoImage(file="elements graphique/Rondin.png").subsample(3)
