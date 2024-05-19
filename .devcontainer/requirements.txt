@@ -1,7 +1,0 @@
-imutils
-opencv-python
-ultralytics
-pygame
-Pillow
-tk
-customtkinter

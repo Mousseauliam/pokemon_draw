@@ -37,9 +37,9 @@ class Menu(tk.Tk):
         self.cabane = tk.PhotoImage(file="elements graphique/CABANE.png")
         self.poke = tk.PhotoImage(file="elements graphique/Pokerock.png").subsample(4)
         self.pierreM = tk.PhotoImage(file="elements graphique/PierreMontre.png")
-        #self.pikachu = tk.PhotoImage(file="elements graphique/pikachu.png").subsample(4)
-        #self.tiplouf = tk.PhotoImage(file="elements graphique/tiplouf.png").subsample(4)
-        #self.mentali = tk.PhotoImage(file="elements graphique/mentali.png").subsample(4)
+        self.pikachu = tk.PhotoImage(file="elements graphique/pikachu.png").subsample(4)
+        self.tiplouf = tk.PhotoImage(file="elements graphique/tiplouf.png").subsample(4)
+        self.mentali = tk.PhotoImage(file="elements graphique/mentali.png").subsample(4)
         self.Pastrouve = tk.PhotoImage(file="elements graphique/Point_int.png").subsample(4)
         self.pierreP = tk.PhotoImage(file="elements graphique/PierrePouce.png").subsample(3)
         self.rondin = tk.PhotoImage(file="elements graphique/Rondin.png").subsample(3)
@@ -146,6 +146,7 @@ class Menu(tk.Tk):
         self.cacher_boutons()
         self.canvas.delete("PierreM")
         self.cam.place(x=475,y=125)
+        self.cam.togle_cam()
         self.boutonB2.place(relx=0.3, rely=0.9, anchor="center")
         self.boutonP.place(relx=0.7, rely=0.9, anchor="center")
         
@@ -166,7 +167,7 @@ class Menu(tk.Tk):
             self.canvas.create_image(330,200,image=self.pikachu,tag="Pikachu")
 
     def Photo(self):
-        print('photo')
+        self.cam.togle_cam()
         self.cacher_boutons()
         self.canvas.create_image(310,280,image=self.rondin,tag="Rondin")
         #self.canvas.create_image(250,200,image=self.boom,tag="PierreP")
