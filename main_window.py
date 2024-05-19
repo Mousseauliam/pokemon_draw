@@ -12,7 +12,6 @@ import threading
 
 class Menu(tk.Tk):
     name=str
-    cam=Cweb
     
     def __init__(self):
         tk.Tk.__init__(self)
@@ -131,6 +130,8 @@ class Menu(tk.Tk):
     def Jouer(self):
         self.canvas.delete("TITRE")
         self.cacher_boutons()
+        print('nom:',self.name)
+        self.canvas.delete(self.name)
         self.boutonB.place(relx=0.4, rely=0.9, anchor="center")
         self.boutonN.place(relx=0.6, rely=0.9, anchor="center")
         self.canvas.delete("Poke")
@@ -143,27 +144,27 @@ class Menu(tk.Tk):
     def InterPhoto(self):
         self.cacher_boutons()
         self.canvas.delete("PierreM")
-        self.cam.place(x=475,y=125)
-        self.cam.togle_cam()
         self.boutonB2.place(relx=0.3, rely=0.9, anchor="center")
         self.boutonP.place(relx=0.7, rely=0.9, anchor="center")
+        self.cam.place(x=475,y=125)
+        self.cam.togle_cam()
         
     def find_poke_update_reponse(self):
         self.name, self.confidence = find_pokemon()
-        self.response['text'] = f"{self.name}"
-        print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
-        if self.name == "tiplouf":
-            print("AZAZA")
-            self.canvas.create_image(330,200,image=self.tiplouf,tag="Tiplouf")
-        
-        if self.name == "mentali":
-            print("OZOZO")
-            self.canvas.create_image(330,200,image=self.mentali,tag="Mentali")
-        
-        if self.name == "pikachu":
-            print("UZUZU")
-            self.canvas.create_image(330,200,image=self.pikachu,tag="Pikachu")
-
+        if self.name != None:
+            self.response['text'] = f"{self.name}"
+            print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
+            if self.name == "tiplouf":
+                self.canvas.create_image(330,200,image=self.tiplouf,tag="tiplouf")
+            
+            if self.name == "mentali":
+                self.canvas.create_image(330,200,image=self.mentali,tag="mentali")
+            
+            if self.name == "pikachu":
+                self.canvas.create_image(330,200,image=self.pikachu,tag="pikachu")
+        else :
+            self.response['text'] = "try again"
+            
     def Photo(self):
         self.cam.togle_cam()
         self.cacher_boutons()
@@ -187,6 +188,7 @@ class Menu(tk.Tk):
     def updateProgressBar(self):
         if not self.find_thread.is_alive():
             self.progress_bar.stop()
+            self.progress_bar.place_forget()
             return
         self.progress_bar.step(10)
         self.after(100, self.updateProgressBar)
