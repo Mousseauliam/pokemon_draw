@@ -1,4 +1,3 @@
-'test'
 import tkinter as tk
 from tkinter import ttk
 import tkinter.font as font
@@ -131,7 +130,6 @@ class Menu(tk.Tk):
 
     def Jouer(self):
         self.canvas.delete("TITRE")
-        self.cam.place_forget()
         self.cacher_boutons()
         self.boutonB.place(relx=0.4, rely=0.9, anchor="center")
         self.boutonN.place(relx=0.6, rely=0.9, anchor="center")
