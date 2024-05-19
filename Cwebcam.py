@@ -3,8 +3,6 @@ from PIL import Image, ImageTk
 import cv2
 from save_img import save_frame
 
-#Pour mac : pip install opencv-python
-
 class Cweb(tk.Canvas):
     width=400
     height=300
@@ -13,8 +11,7 @@ class Cweb(tk.Canvas):
         tk.Canvas.__init__(self, window, width=self.width, height=self.height )
         self.window = window
         self.vid = cv2.VideoCapture(video_source)
-        self.cam=True
-        self.update()
+        self.cam=False
     
     def update(self):
         # Capture une image depuis la vidéo
@@ -22,6 +19,8 @@ class Cweb(tk.Canvas):
         self.frame=frame
         
         if ret:
+            frame = cv2.flip(frame, 1)
+            
             # Convertir l'image en format reconnu par Pillow
             image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             image_r = cv2.resize(image, (self.width,self.height))
@@ -43,3 +42,5 @@ class Cweb(tk.Canvas):
 
     def togle_cam(self):
         self.cam= not self.cam
+        if self.cam:
+            self.update()
