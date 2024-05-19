@@ -154,11 +154,11 @@ class Menu(tk.Tk):
         print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
         if self.name == "tiplouf":
             print("AZAZA")
-            self.canvas.create_image(330,200,image=self.tiplouf,tag="Tiplouf")
+            self.canvas.create_image(320,200,image=self.tiplouf,tag="Tiplouf")
         
         if self.name == "mentali":
             print("OZOZO")
-            self.canvas.create_image(330,200,image=self.mentali,tag="Mentali")
+            self.canvas.create_image(315,210,image=self.mentali,tag="Mentali")
         
         if self.name == "pikachu":
             print("UZUZU")
