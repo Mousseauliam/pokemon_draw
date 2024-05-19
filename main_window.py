@@ -1,6 +1,3 @@
-import os
-os.environ["SDL_AUDIODRIVER"] = "dummy"
-
 import tkinter as tk
 from tkinter import ttk
 import tkinter.font as font
@@ -21,8 +18,8 @@ class Menu(tk.Tk):
         tk.Tk.__init__(self)
         
         #Lance la camera sur autre thread
-        #self.charg_cam()
-        self.cam = Cweb(self)
+        self.charg_cam()
+        #self.cam = Cweb(self)
         
         # Musique
 
