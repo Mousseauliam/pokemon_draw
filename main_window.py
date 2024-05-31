@@ -23,9 +23,9 @@ class Menu(tk.Tk):
         # Musique
 
         pygame.mixer.init()
-        pygame.mixer.music.load("elements graphique/Musique1.mp3")
-        pygame.mixer.music.play()
-
+        pygame.mixer.music.load("elements graphique/Musique.mp3")
+        pygame.mixer.music.play(-1)
+            
         #Images
 
         self.gif = tk.PhotoImage(file="elements graphique/fond.gif").subsample(2)
@@ -38,8 +38,9 @@ class Menu(tk.Tk):
         self.pikachu = tk.PhotoImage(file="elements graphique/pikachu.png").subsample(4)
         self.tiplouf = tk.PhotoImage(file="elements graphique/tiplouf.png").subsample(4)
         self.mentali = tk.PhotoImage(file="elements graphique/mentali.png").subsample(4)
-        self.Pastrouve = tk.PhotoImage(file="elements graphique/Point_int.png").subsample(4)
-        self.pierreP = tk.PhotoImage(file="elements graphique/PierrePouce.png").subsample(3)
+        self.pastrouve = tk.PhotoImage(file="elements graphique/Point_int.png").subsample(4)
+        self.pierreP = tk.PhotoImage(file="elements graphique/PierrePouce.png").subsample(4)
+        self.pierrePB = tk.PhotoImage(file="elements graphique/PierrePB.png").subsample(4)
         self.rondin = tk.PhotoImage(file="elements graphique/Rondin.png").subsample(3)
 
         #Fenetre
@@ -57,22 +58,22 @@ class Menu(tk.Tk):
         self.policeR = ctk.CTkFont("dogica", size=15)
         self.police2 = ctk.CTkFont("Courier", size=15)
 
-        self.boutonJ = ctk.CTkButton(self, text="Jouer", command=self.Jouer, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonR = ctk.CTkButton(self, text="Règles", command=self.AfficheRegles, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonQ = ctk.CTkButton(self, text="Quitter", command=self.quit, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonS = ctk.CTkButton(self, text="Son", command=self.Pause, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonB = ctk.CTkButton(self, text="Retour", command=self.AfficheMenu, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonB2 = ctk.CTkButton(self, text="Retour", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonN = ctk.CTkButton(self, text="Suivant", command=self.InterPhoto, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonP = ctk.CTkButton(self, text="Prendre photo", command=self.Photo, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonJ = ctk.CTkButton(self, text="Play", command=self.Jouer, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonR = ctk.CTkButton(self, text="Rules", command=self.AfficheRegles, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonQ = ctk.CTkButton(self, text="Quit", command=self.quit, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonS = ctk.CTkButton(self, text="Sound", command=self.Pause, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonB = ctk.CTkButton(self, text="Back", command=self.AfficheMenu, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonB2 = ctk.CTkButton(self, text="Back", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonN = ctk.CTkButton(self, text="Next", command=self.InterPhoto, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonP = ctk.CTkButton(self, text="Take picture", command=self.Photo, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonM = ctk.CTkButton(self, text="Menu", command=self.AfficheMenu, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
-        self.boutonRe = ctk.CTkButton(self, text="Rejouer", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
+        self.boutonRe = ctk.CTkButton(self, text="Replay", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
     
         #Textes 
 
-        self.texte = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Pierre : Hey salut, je m’appelle Pierre ! J’espère que tu es prêt à me montrer\ntes meilleurs talents d’artiste. Tu dois tout d’abord dessiner l’un\ndes Pokémons parmi les 3 proposés : Pikachu, Tiplouf et Mentali.\nUne fois ton magnifique dessin terminé, montre-le moi\nà la caméra et prends une photo ! Si l’âme d'’artiste est\nen toi,je devrais être capable de reconnaître quel Pokémon tu\nas dessiné pour te donner quelques anecdotes sur ce dernier !")
+        self.texte = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Hey, my name is Brock! I hope you are ready to show me your best\nartistic talents. First, draw one of the three Pokemon proposed: Pikachu,\nPiplup and Espeon. Once your beautiful drawing is done, show it to me\non camera and take a picture! If the artist’s soul is in you, I should be able\n to recognize which Pokémon you drew to give you some anecdotes about it!")
         self.response = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text= "")
-        self.texte2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text=" Choisis le Pokémon que tu veux dessiner !\nN'hésite pas à aller sur internet pour t'inspirer ! ")
+        self.texte2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock : Choose the Pokémon you want to draw!\nDon’t hesitate to go online to get inspired!")
 
         #Affiche le menu.
 
@@ -116,7 +117,7 @@ class Menu(tk.Tk):
         self.canvas.delete("fond")
         self.canvas.create_image(self.largeur/2,self.hauteur/2,image=self.cabane,tag="CABANE")
         self.canvas.create_image(self.largeur/2,120,image=self.regle,tag="TITRER")
-        self.canvas.create_image(200,270,image=self.pierreR,tag="PierreR")
+        self.canvas.create_image(260,275,image=self.pierreR,tag="PierreR")
         self.boutonB.place(relx=0.8, rely=0.6, anchor="center")
         self.texte.place(relx=0.5, rely=0.8, anchor="center")
         
@@ -128,6 +129,7 @@ class Menu(tk.Tk):
             pygame.mixer.music.play()
 
     def Jouer(self):
+        self.cam.place_forget()
         self.canvas.delete("Pikachu")
         self.canvas.delete("Mentali")
         self.canvas.delete("Tiplouf")
@@ -137,6 +139,8 @@ class Menu(tk.Tk):
         self.canvas.delete("Tiplouf")
         self.canvas.delete("PierreP")
         self.canvas.delete("TITRE")
+        self.canvas.delete("Point_int")
+        self.canvas.delete("PierrePB")
         self.cacher_boutons()
         print('nom:',self.name)
         self.canvas.delete(self.name)
@@ -144,8 +148,8 @@ class Menu(tk.Tk):
         self.boutonN.place(relx=0.6, rely=0.9, anchor="center")
         self.canvas.delete("Poke")
         self.canvas.create_image(300,250,image=self.poke,tag="Poke")
-        self.canvas.create_image(500,250,image=self.pierreM,tag="PierreM")
-        self.texte2.place(relx=0.5, rely=0.8, anchor="center")
+        self.canvas.create_image(730,260,image=self.pierreM,tag="PierreM")
+        self.texte2.place(relx=0.70, rely=0.75, anchor="center")
         
 
     
@@ -163,22 +167,25 @@ class Menu(tk.Tk):
             self.response['text'] = f"{self.name}"
             print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
             if self.name == "tiplouf":
-                self.canvas.create_image(330,200,image=self.tiplouf,tag="tiplouf")
+                self.canvas.create_image(310,220,image=self.tiplouf,tag="tiplouf")
+                self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
             
             if self.name == "mentali":
-                self.canvas.create_image(330,200,image=self.mentali,tag="mentali")
+                self.canvas.create_image(315,220,image=self.mentali,tag="mentali")
+                self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
             
             if self.name == "pikachu":
                 self.canvas.create_image(330,200,image=self.pikachu,tag="pikachu")
+                self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
         else :
-            self.response['text'] = "try again"
+            self.canvas.create_image(315,230,image=self.pastrouve,tag="Point_int")
+            self.canvas.create_image(750,200,image=self.pierrePB,tag="PierreP")
+            self.response['text'] = "Pokémon non identifié"
             
     def Photo(self):
         self.cam.togle_cam()
         self.cacher_boutons()
         self.canvas.create_image(310,280,image=self.rondin,tag="Rondin")
-        self.canvas.create_image(700,300,image=self.pierreP,tag="PierreP")
-        self.canvas.create_image(700,300,image=self.pierreP,tag="PierreP")
         self.canvas.delete("Poke")
         save_frame(self.cam.Frame())
         self.find_thread = threading.Thread(target=self.find_poke_update_reponse)
@@ -188,8 +195,8 @@ class Menu(tk.Tk):
         self.progress_bar.place(relx=0.325, rely=0.35, anchor="center")
         self.response.place(relx=0.325, rely=0.65, anchor="center")
         self.cam.place_forget()
-        self.boutonM.place(relx=0.8, rely=0.6, anchor="center")
-        self.boutonRe.place(relx=0.8, rely=0.5, anchor="center")
+        self.boutonM.place(relx=0.4, rely=0.9, anchor="center")
+        self.boutonRe.place(relx=0.6, rely=0.9, anchor="center")
 
         
 

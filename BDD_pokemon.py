@@ -6,7 +6,7 @@ import pickle
 import os
 
 base_url = "https://pokeapi.co/api/v2/pokemon/"
-pokemon_names = ["pikachu", "piplup", "mew"]
+pokemon_names = ["Pikachu", "Piplup", "Espeon"]
 pokemon_data = []
 
 if not os.path.exists('sauvegarde'):
