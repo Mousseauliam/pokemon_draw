@@ -50,7 +50,6 @@ Pour optimiser notre temps, nous avons segmenté les étapes à effectuer pour e
 <font color=" #1F28AE">*Création d'une banque d'images de Pokémon*</font> 
 
 <div style="text-align: justify;">Avant tout, nous avons sélectionné un starter de 3 pokémons de différentes couleurs et formes comme base afin de faciliter leur différenciation.</div>
-<div style="text-align: left;">
    <img src=startera.png /div>
 
 Nous avons alimenté la banque d'images pour chacun de ces pokémons en utilisant des images numériques disponibles sur internet, des dessins trouvés en lignes et des dessins que nous avons fait nous même pour balayer un maximum de caractéristiques propres à chacun de nos pokémons. Nous les avons séléctionnés en couleur et en noir et blanc pour pouvoir reconnaître un dessin qui serait couleur ou non.
