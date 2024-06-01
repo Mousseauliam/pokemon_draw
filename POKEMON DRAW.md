@@ -30,8 +30,7 @@ Pour réaliser ce projet, nous avons défini les étapes caractéristiques du co
 
 <font color="#1F28AE">
     
-- *Création d'une banque d'images de Pokemon*
-- *Machine Learning de Pokemon*
+- *Entrainement du modele*
 - *Interface graphique*
     - *Récupération du dessin*
     - *Traitement d'images*
@@ -44,33 +43,27 @@ Pour réaliser ce projet, nous avons défini les étapes caractéristiques du co
 Pour optimiser notre temps, nous avons segmenté les étapes à effectuer pour ensuite mettre en commun en un code complet en utilisant GITHUB qui est une plateforme open source de gestion de versions et de collaboration destiné aux developpeurs de logiciels facilitant le travail en parallèle.
 </div>
 
-## Création d'une banque d'images de Pokémon
+
+## Entrainement du modele
+
+
+<font color=" #1F28AE">*Création d'une banque d'images de Pokémon*</font> 
 
 <div style="text-align: justify;">Avant tout, nous avons sélectionné un starter de 3 pokémons de différentes couleurs et formes comme base afin de faciliter leur différenciation.</div>
 <div style="text-align: left;">
    <img src=startera.png /div>
-<div style="text-align: justify;">
+
 Nous avons alimenté la banque d'images pour chacun de ces pokémons en utilisant des images numériques disponibles sur internet, des dessins trouvés en lignes et des dessins que nous avons fait nous même pour balayer un maximum de caractéristiques propres à chacun de nos pokémons. Nous les avons séléctionnés en couleur et en noir et blanc pour pouvoir reconnaître un dessin qui serait couleur ou non.
 La base de données regroupe environ 80 images/dessins pour chacun de nos pokémons afin de l'enrichir et la diversifier pour le Machine learning.
-</div>
 
-## Machine Learning de Pokémon
-
-
-
-
-<font color=" #1F28AE">*Récupération des données*</font> 
-
-On récupère la banque d'images que l'on a créée auparavant qui va nous servir de base dans l'apprentissage de nos différents pokémons.
 
 <font color=" #1F28AE">*Mise en forme des données*</font> 
 
-On récupère la banque d'images que l'on a créée auparavant qui va nous servir de base dans l'apprentissage de nos différents pokémons.
-
+A l'aide du logiciel <a l'aide julinne je me souvien plus du nom !> nous avons pu mettre en forme notre base de donnée, c'est a dire précisée quelle image correspond a quoi. Ce processu es appeler la labelisation, il permet de créer un fichier text pour chaque images qui contient l'id du pokemon (chaque pokemon est associé a un nombre) et la position du pokemon du pokemon dans l'image.
 
 <font color=" #1F28AE">*Apprentissage Supervisé de pokémons*</font> 
 
-<div style="text-align: justify;">Une fois avoir procédé à la récupération de nos données, on entraîne notre réseau de neurones à reconnaître nos pokémons à partir de notre banque d'images par apprentissage supervisé. Après plusieurs essais de code, on remodèle le code jusqu'à ce que la machine soit capable de dire ce qu'est un pikachu dans un premier temps. Puis on reitère cette opération jusqu'à ce qu'il les dissocie et reconnaisse tous. Pour se faire, nous importons les bibliothèques `PIL` pour la manipulation des images et `ultralytics` pour la détection des objets. Ensuite, nous définissons une fonction `find_pokemon` qui accepte un seuil de confiance. La fonction génère le chemin de l'image en utilisant `recup_num()` et ouvre cette image. Nous initialisons le modèle YOLO avec des poids prédéfinis. Pour chaque rotation de l'image, de -10 à 10 degrés par incréments de 5, nous effectuons une détection avec le modèle YOLO et stockons les résultats dans une liste. Chaque résultat contient le nom du détecté et la confiance associée. Nous filtrons les résultats pour trouver celui avec la plus haute confiance qui dépasse le seuil spécifié. Si aucun résultat ne dépasse le seuil, nous retournons [None, None]. En cas de détection multiple, nous sélectionnons le meilleur, sinon nous retournons le seul résultat disponible ou [None, None] s'il n'y a aucune détection.</div>
+<font color="  #FF0000">Une fois avoir procédé à la récupération de nos données, on entraîne notre réseau de neurones à reconnaître nos pokémons à partir de notre banque d'images par apprentissage supervisé. Après plusieurs essais de code, on remodèle le code jusqu'à ce que la machine soit capable de dire ce qu'est un pikachu dans un premier temps. Puis on reitère cette opération jusqu'à ce qu'il les dissocie et reconnaisse tous. Pour se faire, nous importons les bibliothèques `PIL` pour la manipulation des images et `ultralytics` pour la détection des objets. Ensuite, nous définissons une fonction `find_pokemon` qui accepte un seuil de confiance. La fonction génère le chemin de l'image en utilisant `recup_num()` et ouvre cette image. Nous initialisons le modèle YOLO avec des poids prédéfinis. Pour chaque rotation de l'image, de -10 à 10 degrés par incréments de 5, nous effectuons une détection avec le modèle YOLO et stockons les résultats dans une liste. Chaque résultat contient le nom du détecté et la confiance associée. Nous filtrons les résultats pour trouver celui avec la plus haute confiance qui dépasse le seuil spécifié. Si aucun résultat ne dépasse le seuil, nous retournons [None, None]. En cas de détection multiple, nous sélectionnons le meilleur, sinon nous retournons le seul résultat disponible ou [None, None] s'il n'y a aucune détection.</font>
 
 ## Interface graphique
 

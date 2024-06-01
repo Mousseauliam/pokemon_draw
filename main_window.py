@@ -164,19 +164,21 @@ class Menu(tk.Tk):
     def find_poke_update_reponse(self):
         self.name, self.confidence = find_pokemon()
         if self.name != None:
-            self.response['text'] = f"{self.name}"
             print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
             if self.name == "tiplouf":
                 self.canvas.create_image(310,220,image=self.tiplouf,tag="tiplouf")
                 self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
+                self.response['text'] = "Piplup"
             
             if self.name == "mentali":
                 self.canvas.create_image(315,220,image=self.mentali,tag="mentali")
                 self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
+                self.response['text'] = "Espeon"
             
             if self.name == "pikachu":
                 self.canvas.create_image(330,200,image=self.pikachu,tag="pikachu")
                 self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
+                self.response['text'] = "Pikachu"
         else :
             self.canvas.create_image(315,230,image=self.pastrouve,tag="Point_int")
             self.canvas.create_image(750,200,image=self.pierrePB,tag="PierreP")
