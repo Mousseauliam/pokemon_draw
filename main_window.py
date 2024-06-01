@@ -70,11 +70,12 @@ class Menu(tk.Tk):
         self.boutonRe = ctk.CTkButton(self, text="Replay", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
     
         #Textes 
-
+        
         self.texte = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Hey, my name is Brock! I hope you are ready to show me your best\nartistic talents. First, draw one of the three Pokemon proposed: Pikachu,\nPiplup and Espeon. Once your beautiful drawing is done, show it to me\non camera and take a picture! If the artist’s soul is in you, I should be able\n to recognize which Pokémon you drew to give you some anecdotes about it!")
         self.response = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text= "")
         self.texte2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock : Choose the Pokémon you want to draw!\nDon’t hesitate to go online to get inspired!")
-
+        self.texteR = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="It’s a Pikachu ! Did you know ? The impact\nand success of the Pokemon is such that the\nfranchise inspired science during a discovery.\nIn 2008, Japanese researchers discovered a\nnew protein that reacts to electricity. So\nthey simply decided to call it\nPikachurine in obvious reference to Pikachu.")
+        
         #Affiche le menu.
 
         self.AfficheMenu()
@@ -167,7 +168,7 @@ class Menu(tk.Tk):
             print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
             if self.name == "tiplouf":
                 self.canvas.create_image(310,220,image=self.tiplouf,tag="tiplouf")
-                self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
+                self.canvas.create_image(750,180,image=self.pierreP,tag="PierreP")
                 self.response['text'] = "Piplup"
             
             if self.name == "mentali":
@@ -181,7 +182,7 @@ class Menu(tk.Tk):
                 self.response['text'] = "Pikachu"
         else :
             self.canvas.create_image(315,230,image=self.pastrouve,tag="Point_int")
-            self.canvas.create_image(750,200,image=self.pierrePB,tag="PierreP")
+            self.canvas.create_image(750,180,image=self.pierrePB,tag="PierreP")
             self.response['text'] = "Pokémon non identifié"
             
     def Photo(self):
