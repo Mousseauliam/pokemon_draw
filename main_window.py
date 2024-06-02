@@ -114,7 +114,7 @@ class Menu(tk.Tk):
 
         """
         for widget in self.winfo_children():
-            if isinstance(widget, ctk.CTkButton) or isinstance(widget, tk.Label) or isinstance(widget, ttk.Progressbar):
+            if isinstance(widget, ctk.CTkButton) or isinstance(widget, tk.Label) or isinstance(widget, ttk.Progressbar)or isinstance(widget, Cweb):
                 widget.place_forget()
         self.canvas.delete("all")
         self.canvas.create_image(self.largeur/2, self.hauteur/2, image=self.gif,tag="fond")
@@ -160,7 +160,6 @@ class Menu(tk.Tk):
         Purpose: Creation of the Play page.
         
         """
-        self.cam.place_forget()
         self.response['text'] = ""
         self.texteFinal['text'] = ""
         self.cacher_boutons()
@@ -181,8 +180,8 @@ class Menu(tk.Tk):
         self.canvas.create_image(300,250,image=self.poke,tag="Poke")
         self.boutonB2.place(relx=0.3, rely=0.9, anchor="center")
         self.boutonP.place(relx=0.7, rely=0.9, anchor="center")
+        self.cam.turn_on()
         self.cam.place(x=475,y=125)
-        self.cam.togle_cam()
         
     def find_poke_update_reponse(self):
         """
@@ -222,10 +221,10 @@ class Menu(tk.Tk):
         Porpose: Creation of the results page.
         
         """
-        self.cam.togle_cam()
         self.cacher_boutons()
         self.canvas.create_image(310,280,image=self.rondin,tag="Rondin")
         save_frame(self.cam.Frame())
+        self.cam.turn_off()
         self.find_thread = threading.Thread(target=self.find_poke_update_reponse)
         self.find_thread.start()
         self.progress_bar.start()
@@ -233,7 +232,6 @@ class Menu(tk.Tk):
         self.progress_bar.place(relx=0.325, rely=0.35, anchor="center")
         self.response.place(relx=0.325, rely=0.65, anchor="center")
         self.texteFinal.place(relx=0.70, rely=0.65, anchor="center")
-        self.cam.place_forget()
         self.boutonM.place(relx=0.4, rely=0.9, anchor="center")
         self.boutonRe.place(relx=0.6, rely=0.9, anchor="center")
         
