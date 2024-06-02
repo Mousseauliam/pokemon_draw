@@ -106,7 +106,7 @@ class Menu(tk.Tk):
         thread = threading.Thread(target=cam_th)
         thread.start()
     
-    def cacher_boutons(self):
+    def cacher(self):
         """
         Purpose: Remove the progress bar, all buttons and texts from a page.
 
@@ -122,7 +122,7 @@ class Menu(tk.Tk):
         Purpose: Creation of the home menu.
         
         """
-        self.cacher_boutons()
+        self.cacher()
         self.canvas.create_image(self.largeur/2,120,image=self.titre,tag="TITRE")
         self.canvas.pack()
         self.boutonJ.place(relx=0.5, rely=0.5, anchor="center")
@@ -135,7 +135,7 @@ class Menu(tk.Tk):
         Purpose: Creation of the Rules page.
 
         """
-        self.cacher_boutons()
+        self.cacher()
         self.canvas.create_image(self.largeur/2,self.hauteur/2,image=self.cabane,tag="CABANE")
         self.canvas.create_image(self.largeur/2,120,image=self.regle,tag="TITRER")
         self.canvas.create_image(260,275,image=self.pierreR,tag="PierreR")
@@ -160,7 +160,7 @@ class Menu(tk.Tk):
         """
         self.response['text'] = ""
         self.texteFinal['text'] = ""
-        self.cacher_boutons()
+        self.cacher()
         self.boutonB.place(relx=0.4, rely=0.9, anchor="center")
         self.boutonN.place(relx=0.6, rely=0.9, anchor="center")
         self.canvas.create_image(300,250,image=self.poke,tag="Poke")
@@ -174,7 +174,7 @@ class Menu(tk.Tk):
         Purpose: Creation of the Take A Picture page.
         
         """
-        self.cacher_boutons()
+        self.cacher()
         self.canvas.create_image(300,250,image=self.poke,tag="Poke")
         self.boutonB2.place(relx=0.3, rely=0.9, anchor="center")
         self.boutonP.place(relx=0.7, rely=0.9, anchor="center")
@@ -219,7 +219,7 @@ class Menu(tk.Tk):
         Porpose: Creation of the results page.
         
         """
-        self.cacher_boutons()
+        self.cacher()
         self.canvas.create_image(310,280,image=self.rondin,tag="Rondin")
         save_frame(self.cam.Frame())
         self.cam.turn_off()

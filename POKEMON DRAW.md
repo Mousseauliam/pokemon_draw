@@ -74,16 +74,16 @@ The code starts by importing all the necessary modules :
 The first part of the code creates all the elements that will be necessary in the interface, such as buttons, images or texts. In this part, we will also find the creation of the viewport and the canvas (graphic area in which we will be able to draw or write text). 
 When creating images, we used the command line “subsample(num)” which allows you to resize the desired images (for example subsample(3) divides the image size by 3).
 
-The first function of the code is the `charg_cam()` function. This function turns on the camera. Although necessary only later to take the photo, it is executed first because the launch usually takes time.
+The first function of the code is the `charg_cam()` function. This function turns on the camera. Although necessary only later to take the photo, it is executed first because the launch usually takes time. We therefore use multi-threading to avoid blocking the interface during loading. On the other hand, if we call the cam object before it has had time to load, an error appears.
 
-The second function is `cacher_buttons()`. This useful function allows you to delete all elements except the background. It will be used at the beginning of each function displaying elements (such as buttons or images).
+The second function is `cacher()`. This useful function allows you to delete all elements except the background. It will be used at the beginning of each function displaying elements (such as buttons or images).
 
-The third function is the Pause(self) function. This simple function allows you to pause and restart the background music.
+The third function is the `Pause()` function. This simple function allows you to pause and restart the background music.
 
-The functions `AfficheMenu()`, `AfficheRegles()`, `Jouer()`, `InterPhoto())`, `Photo()` are functions that display elements. At the beginning of each of these functions, we find the cacher_buttons(self) function which will delete all the displayed elements except the background. Then each function will display the desired elements. 
+The functions `AfficheMenu()`, `AfficheRegles()`, `Jouer()`, `InterPhoto())`, `Photo()` are functions that display elements. At the beginning of each of these functions, we find the cacher(self) function which will delete all the displayed elements except the background. Then each function will display the desired elements. 
 For example, when the PLAY button is clicked, it executes the Play(self) function, which first removes all the elements (that is the PLAY, RULES, QUIT and SOUND buttons and the TITREPIXEL image) and then displays two new buttons (BACK and NEXT), two new images (PierreM and Pokerock) and a text (Text2).
 
-The particularity of the `Jouer()` function is that it uses other command lines, such as the `save_frame()` command, which allows you to freeze the camera, that is, to take a photo. This function also uses the `find_poke_update_reponse()` function to launch the `find_pokemon.py` program. This program allows you to recognize which Pokémon is in the photo. The function will then display the right elements according to the detected Pokémon.
+The particularity of the `Photo()` function is that it uses other command lines, such as the `save_frame()` command, which allows you to freeze the camera, that is, to take a photo. This function also uses the `find_poke_update_reponse()` function to launch the `find_pokemon.py` program on another thread. This program allows you to recognize which Pokémon is in the photo. The function will then display the right elements according to the detected Pokémon.
 
 ## Explanation of Auxiliary Scripts
 
@@ -91,7 +91,7 @@ As previously stated, to make the project more understandable, we divided it int
 
 **Cwebcam**
 
-The `Cweb` class inherits from the `Canvas` class of Tkinter and encapsulates webcam functionality to capture and display real-time video streams in a graphical interface. It manages video capture, image processing (such as flipping and resizing), and displaying images on the canvas. Declaring this functionality in a separate script improves code modularity and reusability while allowing for less 'heavy' writing.
+The `Cweb` class inherits from the `Canvas` class of Tkinter and encapsulates webcam functionality to capture and display real-time video streams in a graphical interface. It manages video capture, image processing (such as flipping and resizing), and displaying images on the canvas. It also contains two functions that enable and disable the webcam to save resources. Declaring this functionality in a separate script improves code modularity and reusability while allowing for less 'heavy' writing.
 
 **find_pokemon**
 
@@ -100,28 +100,3 @@ The `find_pokemon` function uses the YOLO model to detect and recognize Pokémon
 ## Graphic elements
 
 We have used images and music in this interface. Most of the images (such as the main background and Brock images) were taken directly from the internet. We have modified some of these photos thanks to a graphic editing software (Sketchbook) to correct defects that some had, but also to combine several images in one to save time and lines of code. For the background image of the RULES page, we used an artificial image creation software called Perchance in order to obtain an image corresponding to our desires. In terms of music, we combined two musics (Mishiro Town and Hiwamaki City (Pokémon Ruby & Sapphire)) on a website called Clideo to simplify the use of sound in the code.
-
-<font color="#FF0000">
-
-## Jenine's Work draw from here for your part
-
-## Retrieval of the Drawing
-
-We first import the datetime, ultralytics' YOLO, and cv2 libraries for image and video manipulation with OpenCV. Then, we define constants such as the confidence threshold for detections and the green color for detection boxes. We load the pre-trained YOLOv8n model from the yolov8n.pt file.
-
-We initialize video capture from a video file using `cv2.VideoCapture`. In a loop, we start by measuring the processing time of each image to calculate the FPS later. If no new image is captured, we exit the loop. We apply the YOLO model to each captured image to get detections. For each detection, we extract the object name and associated confidence, and we filter out detections with confidence below the defined threshold.
-
-For valid detections, we draw detection boxes on the image using `cv2.rectangle` and display the object name and confidence using `cv2.putText`. We calculate and display FPS on each processed image, then show the image on the screen with `cv2.imshow`. If the user presses the 'q' key, we exit the loop. Finally, we release video resources with `video_cap.release()` and close all windows opened by OpenCV with `cv2.destroyAllWindows`.
-
-## Pokémon Recognition
-
-From there, we apply our already trained supervised learning recognition on the image which returns in a result the Pokémon identified by the machine.
-
-## Return of Pokémon-related information
-
-Since our machine has learned to recognize the starter Pokémon, we will be able to exploit the response given at the end of the processing. Indeed, we retrieve the Pokémon returned as output and link it to the Pokémon database [PokéAPI](https://pokeapi.co/api/v2/pokemon/) to extract its specific information: its name, size, weight, and color.
-
-For this, we define a `PokemonName` function which allows us to work with a remote database via an API. First, we query the database by building a URL from the `base_url` and `pokemon` variables in the `1_requetes_http.py` file. Once this is done, we use the `requests` library. Then,
-</font>
-
-
