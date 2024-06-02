@@ -16,18 +16,21 @@ class Menu(tk.Tk):
     
     def __init__(self):
         tk.Tk.__init__(self)
-        
-        #Lance la camera sur autre thread
+        """
+        Creation of all necessary the elements for the interface.
+
+        """
+        # Lauch the camera in another thread.
+
         self.charg_cam()
-        #self.cam = Cweb(self)
         
-        # Musique
+        # Initialization of the music module then loading and playing the song (it will be looped).
 
         pygame.mixer.init()
         pygame.mixer.music.load("elements graphique/Musique.mp3")
         pygame.mixer.music.play(-1)
             
-        #Images
+        # Creation of all images and resizing if necessary.
 
         self.gif = tk.PhotoImage(file="elements graphique/fond.gif").subsample(2)
         self.titre = tk.PhotoImage(file="elements graphique/TITREPIXEL.png").subsample(2)
@@ -44,20 +47,21 @@ class Menu(tk.Tk):
         self.pierrePB = tk.PhotoImage(file="elements graphique/PierrePB.png").subsample(4)
         self.rondin = tk.PhotoImage(file="elements graphique/Rondin.png").subsample(3)
 
-        #Fenetre
+        # Creation of the display window.
         
         self.hauteur = self.gif.height()
         self.largeur= self.gif.width()
         self.resizable(width=False,height=False)
         self.title("POKÉDRAW")
-        
         self.canvas = tk.Canvas(self, width=self.largeur, height=self.hauteur)
         
-        #Boutons et polices.
+        # Creation of writting fonts.
 
         self.police = ctk.CTkFont("dogica", size=22)
         self.policeR = ctk.CTkFont("dogica", size=15)
         self.police2 = ctk.CTkFont("Courier", size=15)
+
+        # Creation of all buttons.
 
         self.boutonJ = ctk.CTkButton(self, text="Play", command=self.Jouer, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonR = ctk.CTkButton(self, text="Rules", command=self.AfficheRegles, height=50, width=300, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
@@ -70,7 +74,7 @@ class Menu(tk.Tk):
         self.boutonM = ctk.CTkButton(self, text="Menu", command=self.AfficheMenu, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
         self.boutonRe = ctk.CTkButton(self, text="Replay", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
     
-        #Textes 
+        # Creation of all the texts.
 
         self.textePika1 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: It’s a Pikachu ! Did you know ? The impact\nand success of the Pokemon is such that the\nfranchise inspired science during a discovery.\nIn 2008, Japanese researchers discovered a\nnew protein that reacts to electricity. So\nthey simply decided to call it Pikachurine\n in obvious reference to Pikachu.")
         self.textePika2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Ah! I know a Pikachu when I see one! Tell me\n, did you know that the name Pikachu had a\n rather funny origin? Indeed the “Pika” would\n come from the Japanese onomatopoeia\n “pika-pika” which would mean something\n sparkling, brilliant.  The “chu” would come from\n the noise made by a mouse in Japanese!")
@@ -86,27 +90,39 @@ class Menu(tk.Tk):
         self.response = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text= "")
         self.texte2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock : Choose the Pokémon you want to draw!\nDon’t hesitate to go online to get inspired!")
        
-        #Affiche le menu.
+        # Display the menu.
 
         self.AfficheMenu()
         
-        #test bar de charg
+        # Loading bar.
 
         self.progress_bar = ttk.Progressbar(self, orient="horizontal", mode="indeterminate")
     
     def charg_cam(self):
+        """
+        Purpose: Lauch the camera.
+
+        """
         def cam_th():
             self.cam = Cweb(self)
         thread = threading.Thread(target=cam_th)
         thread.start()
     
     def cacher_boutons(self):
+        """
+        Purpose: Remove the progress bar, all buttons and texts from a page.
+
+        """
         for widget in self.winfo_children():
             if isinstance(widget, ctk.CTkButton) or isinstance(widget, tk.Label) or isinstance(widget, ttk.Progressbar):
                 widget.place_forget()
 
 
     def AfficheMenu(self):
+        """
+        Purpose: Creation of the home menu.
+        
+        """
         self.cacher_boutons()
         self.canvas.create_image(self.largeur/2, self.hauteur/2, image=self.gif,tag="fond")
         self.canvas.create_image(self.largeur/2,120,image=self.titre,tag="TITRE")
@@ -122,6 +138,10 @@ class Menu(tk.Tk):
         self.boutonS.place(relx=0.9, rely=0.9, anchor="center")
         
     def AfficheRegles(self):
+        """
+        Purpose: Creation of the Rules page.
+
+        """
         self.canvas.delete("TITRE")
         self.cacher_boutons()
         self.canvas.delete("fond")
@@ -133,12 +153,20 @@ class Menu(tk.Tk):
         
 
     def Pause(self):
+        """
+        Purpose: Creation of the pause fonction for the SOUND button.
+
+        """
         if pygame.mixer.music.get_busy():
-            pygame.mixer.music.stop()
+            pygame.mixer.music.pause()
         else: 
-            pygame.mixer.music.play()
+            pygame.mixer.music.unpause()
 
     def Jouer(self):
+        """
+        Purpose: Creation of the Play page.
+        
+        """
         self.cam.place_forget()
         self.canvas.delete("Pikachu")
         self.canvas.delete("Mentali")
@@ -164,6 +192,10 @@ class Menu(tk.Tk):
 
     
     def InterPhoto(self):
+        """
+        Purpose: Creation of the Take A Picture page.
+        
+        """
         self.cacher_boutons()
         self.canvas.delete("PierreM")
         self.boutonB2.place(relx=0.3, rely=0.9, anchor="center")
@@ -172,6 +204,10 @@ class Menu(tk.Tk):
         self.cam.togle_cam()
         
     def find_poke_update_reponse(self):
+        """
+        Purpose: Analyze the photo that has just been taken and display the right items according to the pokemon detected.
+        
+        """
         self.name, self.confidence = find_pokemon()
         if self.name != None:
             print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
@@ -199,6 +235,10 @@ class Menu(tk.Tk):
             self.response['text'] = "Pokemon not found"
             
     def Photo(self):
+        """
+        Porpose: Creation of the results page.
+        
+        """
         self.cam.togle_cam()
         self.cacher_boutons()
         self.canvas.create_image(310,280,image=self.rondin,tag="Rondin")
@@ -217,6 +257,10 @@ class Menu(tk.Tk):
 
 
     def updateProgressBar(self):
+        """
+        Purpose: Allows the loading bar to operate
+        
+        """
         if not self.find_thread.is_alive():
             self.progress_bar.stop()
             self.progress_bar.place_forget()
@@ -225,5 +269,9 @@ class Menu(tk.Tk):
         self.after(100, self.updateProgressBar)
         
 if __name__ == "__main__":
+    """
+    Purpose: Allows the code to be executed when the file runs as a script.
+
+    """
     app = Menu()
     app.mainloop()
