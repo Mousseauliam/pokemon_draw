@@ -64,26 +64,26 @@ We decided to embellish our project by creating a graphical interface. This will
 
 The code starts by importing all the necessary modules : 
 
-•	Tkinter : allows the creation of simple graphical interface (ttk allows the creation of simple widgets (here, only the progress bar))  
-•	Tkinter.font : allows the creation of font that will be used for texts.  
-•	Pygame : module that offers tools for creating games. The module is itself subdivided into several sub-modules (here only pygame.mixer will be used).  
-•	CustomTkinter :  allows the creation of modern looking user interfaces in python with tkinter.  
-•	Threading : allows the computer to use several heart in ordrer to do several action in one.  
-•	Random : Allows you to work with random.  
+•	`Tkinter` : allows the creation of simple graphical interface (ttk allows the creation of simple widgets (here, only the progress bar))  
+•	`Tkinter.font` : allows the creation of font that will be used for texts.  
+•	`Pygame` : module that offers tools for creating games. The module is itself subdivided into several sub-modules (here only pygame.mixer will be used).  
+•	`CustomTkinter` :  allows the creation of modern looking user interfaces in python with tkinter.  
+•	`Threading` : allows the computer to use several heart in ordrer to do several action in one.  
+•	`Random` : Allows you to work with random.  
 
 The first part of the code creates all the elements that will be necessary in the interface, such as buttons, images or texts. In this part, we will also find the creation of the viewport and the canvas (graphic area in which we will be able to draw or write text). 
 When creating images, we used the command line “subsample(num)” which allows you to resize the desired images (for example subsample(3) divides the image size by 3).
 
-The first function of the code is the charg_cam(self) function. This function turns on the camera. Although necessary only later to take the photo, it is executed first because the launch usually takes time.
+The first function of the code is the `charg_cam()` function. This function turns on the camera. Although necessary only later to take the photo, it is executed first because the launch usually takes time.
 
-The second function is cacher_buttons(self). This useful function allows you to delete all elements except the background. It will be used at the beginning of each function displaying elements (such as buttons or images).
+The second function is `cacher_buttons()`. This useful function allows you to delete all elements except the background. It will be used at the beginning of each function displaying elements (such as buttons or images).
 
 The third function is the Pause(self) function. This simple function allows you to pause and restart the background music.
 
-The functions AfficheMenu(self), AfficheRegles(self), Jouer(self), InterPhoto(self), Photo(self) are functions that display elements. At the beginning of each of these functions, we find the cacher_buttons(self) function which will delete all the displayed elements except the background. Then each function will display the desired elements. 
+The functions `AfficheMenu()`, `AfficheRegles()`, `Jouer()`, `InterPhoto())`, `Photo()` are functions that display elements. At the beginning of each of these functions, we find the cacher_buttons(self) function which will delete all the displayed elements except the background. Then each function will display the desired elements. 
 For example, when the PLAY button is clicked, it executes the Play(self) function, which first removes all the elements (that is the PLAY, RULES, QUIT and SOUND buttons and the TITREPIXEL image) and then displays two new buttons (BACK and NEXT), two new images (PierreM and Pokerock) and a text (Text2).
 
-The peculiarity of the Play(self) function is that it uses other command lines, such as the save_frame() command, which allows you to freeze the camera, that is, to take a photo. This function also uses the find_poke_update_reponse(self) function to launch the find_pokemon.py program. This program allows you to recognize which Pokémon is in the photo. The function will then display the right elements according to the detected Pokémon.
+The particularity of the `Jouer()` function is that it uses other command lines, such as the `save_frame()` command, which allows you to freeze the camera, that is, to take a photo. This function also uses the `find_poke_update_reponse()` function to launch the `find_pokemon.py` program. This program allows you to recognize which Pokémon is in the photo. The function will then display the right elements according to the detected Pokémon.
 
 ## Explanation of Auxiliary Scripts
 
