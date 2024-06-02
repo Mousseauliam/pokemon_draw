@@ -5,98 +5,92 @@
     MOUSSEAU Liam
 </div>
 
-![Titre](elements_graphique/TITREPIXEL.png)
+![Title](elements_graphique/TITREPIXEL.png)
 
-Bienvenue dans PokemonDraw ! L'objectif de ce jeu est de permettre à l'utilisateur de dessiner un pokémon et de le montrer à la caméra afin que l'ordinateur soit capable de reconnaître celui-ci.
+Welcome to PokemonDraw! The aim of this game is to allow the user to draw a Pokémon and show it to the camera so that the computer can recognize it.
 
-Nous allons essayer dans les quelques paragraphes suivants de vous décrire les différentes étapes de ce projet :
+We will try to describe the different steps of this project in the following paragraphs:
 
 <font color="#1F28AE">
 
-- *Entrainement du modèle*
-   - *Le choix du modèle*
-   - *Création d'une banque d'images de Pokémon*
-   - *Mise en forme des données*
-   - *Apprentissage*
+- *Model Training*
+   - *Model Selection*
+   - *Building a Pokemon Image Database*
+   - *Data Formatting*
+   - *Training*
 
-- *Interface graphique*
+- *Graphical Interface*
     - *Introduction*
-    - *Explication du code principal*
-    - *Explication des scripts annexes*
+    - *Explanation of the Main Code*
+    - *Explanation of Auxiliary Scripts*
 
 </font>
 
-Pour optimiser notre temps, nous avons segmenté les étapes à effectuer pour ensuite mettre en commun de manière à avoir un code complet. Pour cela, nous avons utilisé GITHUB, une plateforme open source de gestion de versions et de collaboration destinée aux développeurs de logiciels facilitant le travail en parallèle.
+To optimize our time, we segmented the steps to be performed and then merged them together to have a complete code. For this, we used GITHUB, an open source platform for version control and collaboration aimed at software developers to facilitate work in parallel.
 
-Pour lancer Pokedraw, il suffit d'exécuter le script `main_windows`. Suivant les ordinateur il peut y avoir une ereure si l'on clique trop vite sur 
+To launch Pokedraw, simply execute the `main_windows` script. Depending on the computer, there may be an error if you click too quickly on...
 
-# Entrainement du modèle
+# Model Training
 
-## Le choix du modèle
+## Model Selection
 
-Le premier choix que nous avons fait a était de choisir quelle modele nous voulions entrainer. Nous nous somme tourner vers le modele open-source YOLO, car il y avait beaucoup de documentation a disposition et de bon resultat 
+The first choice we made was to choose which model we wanted to train. We turned to the open-source YOLO model because there was a lot of documentation available and good results.
 
-## Création d'une banque d'images de Pokémon
+## Building a Pokemon Image Database
 
-Avant tout, nous avons sélectionné un starter de 3 pokémons de différentes couleurs et formes comme base afin de faciliter leur différenciation.
+First, we selected a starter of 3 Pokémon of different colors and shapes as a base to facilitate their differentiation.
 
 ![Starter](startera.png)
 
-Nous avons alimenté la banque d'images de chacun de ces pokémons en utilisant des images numériques disponibles sur internet, des dessins trouvés en ligne et des dessins que nous avons faits nous-mêmes pour balayer un maximum de caractéristiques propres à chacun de nos pokémons. Nous les avons sélectionnés en couleur et en noir et blanc pour pouvoir reconnaître un dessin qui serait en couleur ou non. La base de données regroupe environ 80 images/dessins pour chacun de nos pokémons afin de l'enrichir et la diversifier pour le machine learning.
+We populated the image bank of each of these Pokémon using digital images available on the internet, drawings found online, and drawings we made ourselves to cover a maximum of characteristics specific to each of our Pokémon. We selected them in color and in black and white to be able to recognize a drawing that would be in color or not. The database gathers about 80 images/drawings for each of our Pokémon to enrich and diversify it for machine learning purposes.
 
-## Mise en forme des données
+## Data Formatting
 
-A l'aide du logiciel (aide-moi Juline, je ne me souviens plus du nom !), nous avons pu mettre en forme notre base de données, c'est-à-dire préciser quelle image correspond à quoi. Ce processus est appelé la labellisation, il permet de créer un fichier texte pour chaque image qui contient l'ID du pokémon present sur l'image (chaque pokémon est associé à un nombre) et sa position.
+With the help of the software (help me Juline, I don't remember the name!), we were able to format our database, i.e., specify which image corresponds to what. This process is called labeling, it allows us to create a text file for each image that contains the ID of the Pokémon present in the image (each Pokémon is associated with a number) and its position.
 
-## Apprentissage
+## Training
 
-Pour mener a bien cette partie nous avons utiliser plusieure script, notament deux scritp de test trouvé sur internet (`webcam entrainement` et `yolo sur image`) qui permettent de tester un modele en live sur la webcam ou sur des image enregistrer. Tous les diffrent script que nous avons utiliser pour l'entrainement du modele son present dans le dossier `entrainement et test` ainsi que quelques images pour tester les performance de nos modèle. Il y a aussi un script (`resize img`) que nous avons ecrit pour redimensioner toute les images de notre base de données et standardiser le format. Pour lancer un entrainement il y a besoin de deux fichier, un fichier .yaml qui contient les chemin vers la base de donnée et un script python qui charge le modele et lance l'entrainement suivant les parametre du fichier yaml. Dans un premier temp nous avons fait des experimentation en entrainant un modele uniquement pour detecter pikachu. Puis en utilisant les fichier de test decrit ci-dessu nous avons pu tester le modele. En tatonant petit a petit nous avons réussi a obtenir un modele relativement satifaisant capable de diferencier les diferents pokemon. Malheuresement nous avons remarquer que notre modèle a tendance a prendre les humain pour des espeon, un probleme recurent mais pas très genant si le modele et utiliser correctement dans la mesure ou on n'est pas censé lui montré des photo d'humain.
+To carry out this part, we used several scripts, notably two test scripts found on the internet (`webcam training` and `yolo on image`) which allow testing a model live on the webcam or on saved images. All the different scripts we used for training the model are present in the `training and testing` folder along with a few images to test the performance of our models. There is also a script (`resize img`) that we wrote to resize all the images in our database and standardize the format. To start training, two files are needed, a .yaml file containing the paths to the database and a python script that loads the model and starts training according to the parameters of the yaml file. Initially, we experimented by training a model only to detect Pikachu. Then, using the test files described above, we were able to test the model. By tinkering little by little, we managed to get a relatively satisfactory model capable of differentiating between the different Pokémon. Unfortunately, we noticed that our model tends to mistake humans for Espeon, a recurring problem but not very annoying if the model is used correctly insofar as we are not supposed to show it pictures of humans.
 
-# Interface graphique
+# Graphical Interface
 
 ## Introduction
 
 ![Pokedraw](elements_graphique/CaptureMD.PNG)
 
-## Explication du code principal
+## Explanation of the Main Code
 
 
-## Explication des scripts annexes
+## Explanation of Auxiliary Scripts
 
-Comme dit precedement pour rendre le projet plus comprehensible nous l'avons decoupé en plusieurs script. Cela permet de compartimenter certainne fonction et de simplifier la lecture. Je vais essayer dans les quelques lignes qui suive d'expliquer l'utiliter et le principe de focntionnement de ces scripts :
+As previously stated, to make the project more understandable, we divided it into several scripts. This allows compartmentalizing certain functions and simplifying reading. I will try in the following lines to explain the utility and functioning principle of these scripts:
 
 **Cwebcam**
 
-La classe `Cweb` hérite de la classe `Canvas` de Tkinter et encapsule la fonctionnalité de la webcam pour capturer et afficher des flux vidéo en temps réel dans une interface graphique. Elle permet de gérer la capture vidéo, le traitement des images (comme le retournement et le redimensionnement), et l'affichage des images sur le canvas. Déclarer cette fonctionnalité dans un script séparé améliore la modularité et la réutilisabilité du code tout en permetant une ecriture moins 'lourde'.
+The `Cweb` class inherits from the `Canvas` class of Tkinter and encapsulates webcam functionality to capture and display real-time video streams in a graphical interface. It manages video capture, image processing (such as flipping and resizing), and displaying images on the canvas. Declaring this functionality in a separate script improves code modularity and reusability while allowing for less 'heavy' writing.
 
 **find_pokemon**
 
-La fonction `find_pokemon` utilise le modèle YOLO pour détecter et reconnaître les Pokémon dans une image. L'image et entrée en parametre de la fonction, puis on effectue une rotation de l'image, de -10 à 10 degrés par incréments de 5, et nous effectuons une détection avec le modèle YOLO et stockons les résultats dans une liste. Cette methode et certe un peu plus longue que passer une seule fois l'image dans le modele mais elle permet d'obtenir des resultat plus fiable. Dans le tableau, chaque résultat contient le nom du détecté et la confiance associée. En cas de détection multiple, nous filtrons les résultats pour trouver celui avec la plus haute confiance et qui dépasse le seuil spécifié. Si aucun résultat ne dépasse le seuil, nous retournons [None, None].
-
+The `find_pokemon` function uses the YOLO model to detect and recognize Pokémon in an image. The image is input to the function, then we perform image rotation from -10 to 10 degrees in increments of 5, and we perform detection with the YOLO model and store the results in a list. This method is a bit longer than passing the image through the model only once but it allows for more reliable results. In the array, each result contains the name of the detected object and the associated confidence. In case of multiple detections, we filter the results to find the one with the highest confidence and that exceeds the specified threshold. If no result exceeds the threshold, we return [None, None].
 
 <font color="#FF0000">
 
-## Travail Jenine piocher dedant pour votre partie
+## Jenine's Work draw from here for your part
 
-## Récupération du dessin
+## Retrieval of the Drawing
 
-Nous importons d'abord les bibliothèques datetime, YOLO d'ultralytics, et cv2 pour la manipulation des images et vidéos avec OpenCV. Ensuite, nous définissons des constantes comme le seuil de confiance pour les détections et la couleur verte pour les boîtes de détection. Nous chargeons le modèle pré-entraîné YOLOv8n à partir du fichier yolov8n.pt.
+We first import the datetime, ultralytics' YOLO, and cv2 libraries for image and video manipulation with OpenCV. Then, we define constants such as the confidence threshold for detections and the green color for detection boxes. We load the pre-trained YOLOv8n model from the yolov8n.pt file.
 
-Nous initialisons la capture vidéo à partir d'un fichier vidéo en utilisant `cv2.VideoCapture`. Dans une boucle, nous commençons par mesurer le temps de traitement de chaque image pour calculer les FPS par la suite. Si aucune nouvelle image n'est capturée, nous quittons la boucle. Nous appliquons le modèle YOLO à chaque image capturée pour obtenir des détections. Pour chaque détection, nous extrayons le nom de l'objet et la confiance associée, et nous filtrons les détections ayant une confiance inférieure au seuil défini.
+We initialize video capture from a video file using `cv2.VideoCapture`. In a loop, we start by measuring the processing time of each image to calculate the FPS later. If no new image is captured, we exit the loop. We apply the YOLO model to each captured image to get detections. For each detection, we extract the object name and associated confidence, and we filter out detections with confidence below the defined threshold.
 
-Pour les détections valides, nous dessinons des boîtes de détection sur l'image en utilisant `cv2.rectangle` et nous affichons le nom de l'objet et la confiance en utilisant `cv2.putText`. Nous calculons et affichons les FPS sur chaque image traitée, puis montrons l'image à l'écran avec `cv2.imshow`. Si l'utilisateur appuie sur la touche 'q', nous quittons la boucle. Enfin, nous libérons les ressources vidéo avec `video_cap.release()` et fermons toutes les fenêtres ouvertes par OpenCV avec `cv2.destroyAllWindows`.
+For valid detections, we draw detection boxes on the image using `cv2.rectangle` and display the object name and confidence using `cv2.putText`. We calculate and display FPS on each processed image, then show the image on the screen with `cv2.imshow`. If the user presses the 'q' key, we exit the loop. Finally, we release video resources with `video_cap.release()` and close all windows opened by OpenCV with `cv2.destroyAllWindows`.
 
-## Reconnaissance du Pokémon
+## Pokémon Recognition
 
-Dès lors, on applique notre reconnaissance par apprentissage supervisé déjà entraînée sur l'image qui renvoie dans un résultat le pokémon identifié par la machine.
+From there, we apply our already trained supervised learning recognition on the image which returns in a result the Pokémon identified by the machine.
 
-## Renvoi des informations liées au pokémon
+## Return of Pokémon-related information
 
-Notre machine ayant appris à reconnaître les pokémons du starter, nous allons pouvoir exploiter la réponse donnée à l'issue du traitement. En effet, nous récupérons le pokémon renvoyé en sortie et nous le rattachons à la base de données Pokémon [PokéAPI](https://pokeapi.co/api/v2/pokemon/) afin d'en extraire ses informations spécifiques : son nom, sa taille, son poids et sa couleur.
+Since our machine has learned to recognize the starter Pokémon, we will be able to exploit the response given at the end of the processing. Indeed, we retrieve the Pokémon returned as output and link it to the Pokémon database [PokéAPI](https://pokeapi.co/api/v2/pokemon/) to extract its specific information: its name, size, weight, and color.
 
-Pour cela, nous définissons une fonction `NomPokemon` qui va nous permettre de travailler avec une base de données distante par API. D'une part, nous interrogeons la base de données en construisant une URL à partir des variables `base_url` et `pokemon` dans le fichier `1_requetes_http.py`. Une fois cela fait, nous utilisons la librairie `requests`. Par la suite, nous effectuons une requête de type "GET" sur l’URL précédente afin d'afficher le texte brut du JSON obtenu. Finalement, nous transformons le résultat obtenu en un dictionnaire ce qui va nous permettre de récupérer et d'afficher en particulier les informations sur la taille et le poids du pokémon.
-
-## Interface graphique
-
-Nous avons décidé de mettre en forme notre code sous forme d'interface graphique de jeu.
-</font>
+For this, we define a `PokemonName` function which allows us to work with a remote database via an API. First, we query the database by building a URL from the `base_url` and `pokemon` variables in the `1_requetes_http.py` file. Once this is done, we use the `requests` library. Then,
