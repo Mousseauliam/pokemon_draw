@@ -100,3 +100,6 @@ The `find_pokemon` function uses the YOLO model to detect and recognize Pokémon
 ## Graphic elements
 
 We have used images and music in this interface. Most of the images (such as the main background and Brock images) were taken directly from the internet. We have modified some of these photos thanks to a graphic editing software (Sketchbook) to correct defects that some had, but also to combine several images in one to save time and lines of code. For the background image of the RULES page, we used an artificial image creation software called Perchance in order to obtain an image corresponding to our desires. In terms of music, we combined two musics (Mishiro Town and Hiwamaki City (Pokémon Ruby & Sapphire)) on a website called Clideo to simplify the use of sound in the code.
+
+
+P.S : to test the project, if you don't feel like drawing, take a picture of a pokemon on your phone and show it to the camera.
