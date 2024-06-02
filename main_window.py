@@ -2,8 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.font as font
 import pygame
-from PIL import Image
-from PIL import ImageTk
 import customtkinter as ctk
 from Cwebcam import Cweb
 from save_img import save_frame
