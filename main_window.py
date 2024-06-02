@@ -25,25 +25,25 @@ class Menu(tk.Tk):
         # Initialization of the music module then loading and playing the song (it will be looped).
 
         pygame.mixer.init()
-        pygame.mixer.music.load("elements graphique/Musique.mp3")
+        pygame.mixer.music.load("elements_graphique/Musique.mp3")
         pygame.mixer.music.play(-1)
             
         # Creation of all images and resizing if necessary.
 
-        self.gif = tk.PhotoImage(file="elements graphique/fond.gif").subsample(2)
-        self.titre = tk.PhotoImage(file="elements graphique/TITREPIXEL.png").subsample(2)
-        self.regle = tk.PhotoImage(file="elements graphique/TITRER.png").subsample(4)
-        self.pierreR = tk.PhotoImage(file="elements graphique/Pierre.png").subsample(3)
-        self.cabane = tk.PhotoImage(file="elements graphique/CABANE.png")
-        self.poke = tk.PhotoImage(file="elements graphique/Pokerock.png").subsample(4)
-        self.pierreM = tk.PhotoImage(file="elements graphique/PierreMontre.png")
-        self.pikachu = tk.PhotoImage(file="elements graphique/pikachu.png").subsample(4)
-        self.tiplouf = tk.PhotoImage(file="elements graphique/tiplouf.png").subsample(4)
-        self.mentali = tk.PhotoImage(file="elements graphique/mentali.png").subsample(4)
-        self.pastrouve = tk.PhotoImage(file="elements graphique/Point_int.png").subsample(4)
-        self.pierreP = tk.PhotoImage(file="elements graphique/PierrePouce.png").subsample(4)
-        self.pierrePB = tk.PhotoImage(file="elements graphique/PierrePB.png").subsample(4)
-        self.rondin = tk.PhotoImage(file="elements graphique/Rondin.png").subsample(3)
+        self.gif = tk.PhotoImage(file="elements_graphique/fond.gif").subsample(2)
+        self.titre = tk.PhotoImage(file="elements_graphique/TITREPIXEL.png").subsample(2)
+        self.regle = tk.PhotoImage(file="elements_graphique/TITRER.png").subsample(4)
+        self.pierreR = tk.PhotoImage(file="elements_graphique/Pierre.png").subsample(3)
+        self.cabane = tk.PhotoImage(file="elements_graphique/CABANE.png")
+        self.poke = tk.PhotoImage(file="elements_graphique/Pokerock.png").subsample(4)
+        self.pierreM = tk.PhotoImage(file="elements_graphique/PierreMontre.png")
+        self.pikachu = tk.PhotoImage(file="elements_graphique/pikachu.png").subsample(4)
+        self.tiplouf = tk.PhotoImage(file="elements_graphique/tiplouf.png").subsample(4)
+        self.mentali = tk.PhotoImage(file="elements_graphique/mentali.png").subsample(4)
+        self.pastrouve = tk.PhotoImage(file="elements_graphique/Point_int.png").subsample(4)
+        self.pierreP = tk.PhotoImage(file="elements_graphique/PierrePouce.png").subsample(4)
+        self.pierrePB = tk.PhotoImage(file="elements_graphique/PierrePB.png").subsample(4)
+        self.rondin = tk.PhotoImage(file="elements_graphique/Rondin.png").subsample(3)
 
         # Creation of the display window.
         

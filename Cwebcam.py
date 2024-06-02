@@ -45,7 +45,6 @@ class Cweb(tk.Canvas):
         
         # Repeat this function at regular intervals if camera is active
         if self.cam:
-            print('ok camera running')
             self.window.after(10, self.update)
 
     def Frame(self):
@@ -63,12 +62,9 @@ class Cweb(tk.Canvas):
     
     def turn_on(self):
         if not self.cam:
-            print('on update la cam')
             self.cam = True
             self.update()
-        print("camera on")
 
     def turn_off(self):
         self.cam = False
-        print("camera off")
 
