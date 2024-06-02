@@ -75,17 +75,17 @@ class Menu(tk.Tk):
         self.boutonRe = ctk.CTkButton(self, text="Replay", command=self.Jouer, height=30, width=50, font=(self.police), text_color="#FFCB29", fg_color="#3860A8", hover_color="#00C4F0", corner_radius=0, border_width=4, border_color="#1D2C60")
     
         # Creation of all the texts.
-
-        self.textePika1 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: It’s a Pikachu ! Did you know ? The impact\nand success of the Pokemon is such that the\nfranchise inspired science during a discovery.\nIn 2008, Japanese researchers discovered a\nnew protein that reacts to electricity. So\nthey simply decided to call it Pikachurine\n in obvious reference to Pikachu.")
-        self.textePika2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Ah! I know a Pikachu when I see one! Tell me\n, did you know that the name Pikachu had a\n rather funny origin? Indeed the “Pika” would\n come from the Japanese onomatopoeia\n “pika-pika” which would mean something\n sparkling, brilliant.  The “chu” would come from\n the noise made by a mouse in Japanese!")
-        self.textePika3 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Wow! What a nice drawing of Pikachu! These\nPokemons live in the forest away from humans.\nThey basically eat fruit. When they are not\nmature enough, they electrify them with\nelectricity stored in their cheeks to make them\nmore tender. If a storm is approaching, it is\nbecause several Pikachu have gathered!")
-        self.textePiplup1 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: It’s a Piplup ! Despite appearances, it’s a very\nproud Pokémon that has a hard time\nconnecting with its trainer. He has a very\nawkward walk but still proudly bombs the\ntorso. He is also an excellent swimmer, who can\nsnorkel under water for up to ten minutes while\nhunting.")
-        self.textePiplup2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: What a beautiful drawing of Piplup ! Did you\nknow that this Pokémon and its evolutions\nare mainly inspired by the emperor Napoleon\nBonaparte? Indeed, the name of his last\nevolution Empoleon is composed of \n“Emperor” and “Napoleon”, plus its size is\n1m70 or almost that of the French emperor.")
-        self.textePiplup3 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: I love this Piplup drawing! It’s a very popular\nPokémon among the Pokémon community.\nThis popularity is partly due to the Pokémon\nDiamond and Pearl games that rank fourth\namong the best-selling games of the\nNintendo DS, the 2nd best-selling console\nof all time.")
-        self.texteEspeon1 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: It’s a Espeon! The gem he wears in the\nmiddle reinforces the psychic powers he has\nacquired to protect his Trainer. His forked tail\nshudders when he predicts the movements of\nhis opponents. It is rare to find Mentali in the\nwild, and it is more often visible in urban areas.")
-        self.texteEspeon2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Wow! Great drawing you made us there!\nApparently, Espeon’s appearance seems\nto be inspired by the legends of Bakeneko\nand Nekomata, two yōkai depicted as\nmysterious and intelligent cats with\nsupernatural powers. Unfortunately, this\ninformation has never been confirmed by the\ncreators.")
-        self.texteEspeon3 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Ah! That’s a beautiful drawing of Espeon!\nThis Pokemon is extremely faithful to any\nTrainer he deems worthy. It is said that this\nPokemon has developed its precognitive\npowers to protect its trainer from evil. He also\nlearned to read drafts in order to predict the\nmovements of these opponents.")
-        self.texteNI = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Oh… Looks like I couldn’t recognize the\nPokemon you wanted to draw! Maybe the\npicture was not taken correctly, make sure you\nhave good lighting! (Or maybe your drawing was\nhorrible, but I dare not tell you…)")
+        self.textReponse = [["Brock: It’s a Pikachu ! Did you know ? The impact\nand success of the Pokemon is such that the\nfranchise inspired science during a discovery.\nIn 2008, Japanese researchers discovered a\nnew protein that reacts to electricity. So\nthey simply decided to call it Pikachurine\n in obvious reference to Pikachu.",
+                             "Brock: Ah! I know a Pikachu when I see one! Tell me\n, did you know that the name Pikachu had a\n rather funny origin? Indeed the “Pika” would\n come from the Japanese onomatopoeia\n “pika-pika” which would mean something\n sparkling, brilliant.  The “chu” would come from\n the noise made by a mouse in Japanese!",
+                             "Brock: Wow! What a nice drawing of Pikachu! These\nPokemons live in the forest away from humans.\nThey basically eat fruit. When they are not\nmature enough, they electrify them with\nelectricity stored in their cheeks to make them\nmore tender. If a storm is approaching, it is\nbecause several Pikachu have gathered!"
+                             ],["Brock: It’s a Piplup ! Despite appearances, it’s a very\nproud Pokémon that has a hard time\nconnecting with its trainer. He has a very\nawkward walk but still proudly bombs the\ntorso. He is also an excellent swimmer, who can\nsnorkel under water for up to ten minutes while\nhunting.",
+                            "Brock: What a beautiful drawing of Piplup ! Did you\nknow that this Pokémon and its evolutions\nare mainly inspired by the emperor Napoleon\nBonaparte? Indeed, the name of his last\nevolution Empoleon is composed of \n“Emperor” and “Napoleon”, plus its size is\n1m70 or almost that of the French emperor.",
+                            "Brock: I love this Piplup drawing! It’s a very popular\nPokémon among the Pokémon community.\nThis popularity is partly due to the Pokémon\nDiamond and Pearl games that rank fourth\namong the best-selling games of the\nNintendo DS, the 2nd best-selling console\nof all time."
+                            ],["Brock: It’s a Espeon! The gem he wears in the\nmiddle reinforces the psychic powers he has\nacquired to protect his Trainer. His forked tail\nshudders when he predicts the movements of\nhis opponents. It is rare to find Mentali in the\nwild, and it is more often visible in urban areas.",
+                            "Brock: Wow! Great drawing you made us there!\nApparently, Espeon’s appearance seems\nto be inspired by the legends of Bakeneko\nand Nekomata, two yōkai depicted as\nmysterious and intelligent cats with\nsupernatural powers. Unfortunately, this\ninformation has never been confirmed by the\ncreators.",
+                            "Brock: Ah! That’s a beautiful drawing of Espeon!\nThis Pokemon is extremely faithful to any\nTrainer he deems worthy. It is said that this\nPokemon has developed its precognitive\npowers to protect its trainer from evil. He also\nlearned to read drafts in order to predict the\nmovements of these opponents."
+                            ],"Oh… Looks like I couldn’t recognize the\nPokemon you wanted to draw! Maybe the\npicture was not taken correctly, make sure you\nhave good lighting! (Or maybe your drawing was\nhorrible, but I dare not tell you…)"]
+        self.texteFinal = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2)
         self.texte = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock: Hey, my name is Brock! I hope you are ready to show me your best\nartistic talents. First, draw one of the three Pokemon proposed: Pikachu,\nPiplup and Espeon. Once your beautiful drawing is done, show it to me\non camera and take a picture! If the artist’s soul is in you, I should be able\n to recognize which Pokémon you drew to give you some anecdotes about it!")
         self.response = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.policeR,text= "")
         self.texte2 = tk.Label(self,justify="left",bg="white",bd=4,relief="ridge",fg="black",font=self.police2,text="Brock : Choose the Pokémon you want to draw!\nDon’t hesitate to go online to get inspired!")
@@ -116,7 +116,8 @@ class Menu(tk.Tk):
         for widget in self.winfo_children():
             if isinstance(widget, ctk.CTkButton) or isinstance(widget, tk.Label) or isinstance(widget, ttk.Progressbar):
                 widget.place_forget()
-
+        self.canvas.delete("all")
+        self.canvas.create_image(self.largeur/2, self.hauteur/2, image=self.gif,tag="fond")
 
     def AfficheMenu(self):
         """
@@ -124,14 +125,8 @@ class Menu(tk.Tk):
         
         """
         self.cacher_boutons()
-        self.canvas.create_image(self.largeur/2, self.hauteur/2, image=self.gif,tag="fond")
         self.canvas.create_image(self.largeur/2,120,image=self.titre,tag="TITRE")
         self.canvas.pack()
-        self.canvas.delete("PierreR")
-        self.canvas.delete("TITRER")
-        self.canvas.delete("CABANE")
-        self.canvas.delete("Poke")
-        self.canvas.delete("PierreM")
         self.boutonJ.place(relx=0.5, rely=0.5, anchor="center")
         self.boutonR.place(relx=0.5, rely=0.625, anchor="center")
         self.boutonQ.place(relx=0.5, rely=0.75, anchor="center")
@@ -142,9 +137,7 @@ class Menu(tk.Tk):
         Purpose: Creation of the Rules page.
 
         """
-        self.canvas.delete("TITRE")
         self.cacher_boutons()
-        self.canvas.delete("fond")
         self.canvas.create_image(self.largeur/2,self.hauteur/2,image=self.cabane,tag="CABANE")
         self.canvas.create_image(self.largeur/2,120,image=self.regle,tag="TITRER")
         self.canvas.create_image(260,275,image=self.pierreR,tag="PierreR")
@@ -168,23 +161,11 @@ class Menu(tk.Tk):
         
         """
         self.cam.place_forget()
-        self.canvas.delete("Pikachu")
-        self.canvas.delete("Mentali")
-        self.canvas.delete("Tiplouf")
-        self.canvas.delete("PierreP")
-        self.canvas.delete("Pikachu")
-        self.canvas.delete("Mentali")
-        self.canvas.delete("Tiplouf")
-        self.canvas.delete("PierreP")
-        self.canvas.delete("TITRE")
-        self.canvas.delete("Point_int")
-        self.canvas.delete("PierrePB")
+        self.response['text'] = ""
+        self.texteFinal['text'] = ""
         self.cacher_boutons()
-        print('nom:',self.name)
-        self.canvas.delete(self.name)
         self.boutonB.place(relx=0.4, rely=0.9, anchor="center")
         self.boutonN.place(relx=0.6, rely=0.9, anchor="center")
-        self.canvas.delete("Poke")
         self.canvas.create_image(300,250,image=self.poke,tag="Poke")
         self.canvas.create_image(730,260,image=self.pierreM,tag="PierreM")
         self.texte2.place(relx=0.70, rely=0.75, anchor="center")
@@ -197,7 +178,7 @@ class Menu(tk.Tk):
         
         """
         self.cacher_boutons()
-        self.canvas.delete("PierreM")
+        self.canvas.create_image(300,250,image=self.poke,tag="Poke")
         self.boutonB2.place(relx=0.3, rely=0.9, anchor="center")
         self.boutonP.place(relx=0.7, rely=0.9, anchor="center")
         self.cam.place(x=475,y=125)
@@ -209,30 +190,32 @@ class Menu(tk.Tk):
         
         """
         self.name, self.confidence = find_pokemon()
+
         if self.name != None:
             print(f"Objet détecté : {self.name}, Score de confiance : {self.confidence}")
             if self.name == "tiplouf":
                 self.canvas.create_image(310,220,image=self.tiplouf,tag="tiplouf")
                 self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
-                random.choice([self.textePiplup1.place(relx=0.70, rely=0.65, anchor="center"),self.textePiplup2.place(relx=0.70, rely=0.65, anchor="center"),self.textePiplup3.place(relx=0.70, rely=0.65, anchor="center")])
+                self.texteFinal['text']=random.choice(self.textReponse[1])
                 self.response['text'] = "Piplup"
             
             if self.name == "mentali":
                 self.canvas.create_image(315,220,image=self.mentali,tag="mentali")
                 self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
-                random.choice([self.texteEspeon1.place(relx=0.70, rely=0.65, anchor="center"),self.texteEspeon2.place(relx=0.70, rely=0.65, anchor="center"),self.texteEspeon3.place(relx=0.70, rely=0.65, anchor="center")])
+                self.texteFinal['text']=random.choice(self.textReponse[2])
                 self.response['text'] = "Espeon"
             
             if self.name == "pikachu":
                 self.canvas.create_image(330,200,image=self.pikachu,tag="pikachu")
                 self.canvas.create_image(750,200,image=self.pierreP,tag="PierreP")
-                random.choice([self.textePika1.place(relx=0.70, rely=0.65, anchor="center"),self.textePika2.place(relx=0.70, rely=0.65, anchor="center"),self.textePika3.place(relx=0.70, rely=0.65, anchor="center")])
+                self.texteFinal['text']=random.choice(self.textReponse[0])
                 self.response['text'] = "Pikachu"
         else :
             self.canvas.create_image(315,230,image=self.pastrouve,tag="Point_int")
             self.canvas.create_image(750,185,image=self.pierrePB,tag="PierrePB")
-            self.texteNI.place(relx=0.75, rely=0.6, anchor="center")
+            self.texteFinal['text']=self.textReponse[3]
             self.response['text'] = "Pokemon not found"
+        
             
     def Photo(self):
         """
@@ -242,7 +225,6 @@ class Menu(tk.Tk):
         self.cam.togle_cam()
         self.cacher_boutons()
         self.canvas.create_image(310,280,image=self.rondin,tag="Rondin")
-        self.canvas.delete("Poke")
         save_frame(self.cam.Frame())
         self.find_thread = threading.Thread(target=self.find_poke_update_reponse)
         self.find_thread.start()
@@ -250,6 +232,7 @@ class Menu(tk.Tk):
         self.updateProgressBar()
         self.progress_bar.place(relx=0.325, rely=0.35, anchor="center")
         self.response.place(relx=0.325, rely=0.65, anchor="center")
+        self.texteFinal.place(relx=0.70, rely=0.65, anchor="center")
         self.cam.place_forget()
         self.boutonM.place(relx=0.4, rely=0.9, anchor="center")
         self.boutonRe.place(relx=0.6, rely=0.9, anchor="center")
