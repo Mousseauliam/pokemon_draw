@@ -40,7 +40,7 @@ The first choice we made was to choose which model we wanted to train. We turned
 
 First, we selected a starter of 3 Pokémon of different colors and shapes as a base to facilitate their differentiation.
 
-![Starter](startera.png)
+![Starter](elements_graphique/startera.png)
 
 We have populated the image bank for each of these Pokémon using digital images available on the internet, drawings found online and drawings we have made ourselves, to scan as many of the characteristics specific to each of our Pokémon as possible. We selected them in color and in black and white, so as to be able to recognize whether a drawing was in color or not. The database contains around 80 images/drawings for each of our Pokémon to enrich and diversify it for machine learning.
 
