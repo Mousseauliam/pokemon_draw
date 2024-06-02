@@ -26,9 +26,9 @@ We will try to describe the different steps of this project in the following par
 
 </font>
 
-To optimize our time, we segmented the steps to be performed and then merged them together to have a complete code. For this, we used GITHUB, an open source platform for version control and collaboration aimed at software developers to facilitate work in parallel.
+To optimize our time, we segmented the work and then merged them together to have a complete code. To do this, we used GITHUB, an open source versioning and collaboration platform for software developers that facilitates parallel work.
 
-To launch Pokedraw, simply execute the `main_windows` script. Depending on the computer, there may be an error if you click too quickly on...
+To launch Pokedraw, simply execute the `main_windows` script. Depending on the computer, there may be an error if you click the play button too quickly, due to multi-threading.
 
 # Model Training
 
@@ -42,15 +42,15 @@ First, we selected a starter of 3 Pokémon of different colors and shapes as a b
 
 ![Starter](startera.png)
 
-We populated the image bank of each of these Pokémon using digital images available on the internet, drawings found online, and drawings we made ourselves to cover a maximum of characteristics specific to each of our Pokémon. We selected them in color and in black and white to be able to recognize a drawing that would be in color or not. The database gathers about 80 images/drawings for each of our Pokémon to enrich and diversify it for machine learning purposes.
+We've populated the image bank for each of these pokémons using digital images available on the internet, drawings found online and drawings we've made ourselves, to scan as many of the characteristics specific to each of our pokémons as possible. We selected them in color and in black and white, so as to be able to recognize whether a drawing was in color or not. The database contains around 80 images/drawings for each of our pokémons, to enrich and diversify it for machine learning.
 
 ## Data Formatting
 
-With the help of the software (help me Juline, I don't remember the name!), we were able to format our database, i.e., specify which image corresponds to what. This process is called labeling, it allows us to create a text file for each image that contains the ID of the Pokémon present in the image (each Pokémon is associated with a number) and its position.
+With the help of the software LabelImg, we were able to format our database, i.e. specify which image corresponds to what. This process is called labeling, it allows us to create a text file for each image that contains the ID of the Pokémon present in the image (each Pokémon is associated with a number) and its position.
 
 ## Training
 
-To carry out this part, we used several scripts, notably two test scripts found on the internet (`webcam training` and `yolo on image`) which allow testing a model live on the webcam or on saved images. All the different scripts we used for training the model are present in the `training and testing` folder along with a few images to test the performance of our models. There is also a script (`resize img`) that we wrote to resize all the images in our database and standardize the format. To start training, two files are needed, a .yaml file containing the paths to the database and a python script that loads the model and starts training according to the parameters of the yaml file. Initially, we experimented by training a model only to detect Pikachu. Then, using the test files described above, we were able to test the model. By tinkering little by little, we managed to get a relatively satisfactory model capable of differentiating between the different Pokémon. Unfortunately, we noticed that our model tends to mistake humans for Espeon, a recurring problem but not very annoying if the model is used correctly insofar as we are not supposed to show it pictures of humans.
+To carry out this part, we used several scripts, notably two test scripts found on the internet (`webcam yolo` and `yolo sur image`) which allow testing a model on live with the webcam or on saved images. All the different scripts we used for training the model are present in the `entrainement et test` folder along with a few images to test the performance of our models. There is also a script (`resize img`) that we wrote to resize all the images in our database and standardize the format. To start training, two files are needed, a .yaml file containing the paths to the database and a python script that loads the model and starts training according to the parameters of the yaml file. Initially, we experimented by training a model only to detect Pikachu. Then, using the test files described above, we were able to test the model.By trial and error, we succeeded in obtaining a relatively satisfactory model capable of differentiating between different pokemons. Unfortunately, we noticed that our model had a tendency to mistake humans for espeons, a recurring problem but not very annoying if the model is used correctly insofar as we are not supposed to show it pictures of humans.
 
 # Graphical Interface
 

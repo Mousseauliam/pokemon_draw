@@ -8,9 +8,8 @@ def resize_image_keep_ratio(image, target_height):
     resized_image = cv2.resize(image, (int(width * ratio), target_height))
     return resized_image
 
-# Source folder containing the images
+
 input_folder = "bddpokemon/Mentali"
-# Destination folder for resized images
 output_folder = "datasets/train/mentali/images"
 
 # Create the output folder if it doesn't exist
